@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "lacomanda-pps": {
+      "hosting": {
+        "app": [
+          "lacomanda-pps"
+        ]
+      }
+    }
+  }
+}
