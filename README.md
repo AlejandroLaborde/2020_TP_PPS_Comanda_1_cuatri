@@ -26,4 +26,4 @@ Sebastian Pasquini -> Icono
 Alejandro Laborde Parodi -> Preparación de entorno de desarrollo, conexion a firebase y readme.
 ```
 
-![La Comanda](../imagenes/presentacion.png)
+![La Comanda](https://github.com/AlejandroLaborde/2020_TP_PPS_Comanda_1_cuatri/blob/master/proyecto/imagenes/presentacion.jpg)
