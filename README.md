@@ -31,8 +31,8 @@ Build: [APK](https://github.com/AlejandroLaborde/2020_TP_PPS_Comanda_1_cuatri/tr
 
 Objetivos:
 ```
-Santiago Ortiz -> 
-Sebastian Pasquini -> 
-Alejandro Laborde Parodi -> 
+Santiago Ortiz -> Componente lectura qr
+Sebastian Pasquini -> pagina login/registro
+Alejandro Laborde Parodi -> servicios de integracion
 ```
 
