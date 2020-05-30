@@ -2,23 +2,28 @@
 
 ### Desarrolladores 🔧
 
-_Alejandro Laborde Parodi_
-_Santiago Ortiz_
-_Sebastian Pasquini_
+```
+Alejandro Laborde Parodi
+Santiago Ortiz
+Sebastian Pasquini
+
+```
+
 
 ## Despliegue 📦
 
-_ Como herramienta para organizacion interna, estamos usando [Trello](https://trello.com/b/os8TqQu6/trabajo-practico-pps), nos permite de forma sencilla organizar cada iteracion_
-```
-https://trello.com/b/os8TqQu6/trabajo-practico-pps
-```
-_El sistema cuenta con conexion a firebase, donde alojamos nuestra base de datos, storage y autentificacion para los usuarios_
+El sistema cuenta con conexion a [Firebase](https://console.firebase.google.com/project/lacomanda-pps/overview), donde alojamos nuestra base de datos, storage y autentificacion para los usuarios.
+
+
+Como herramienta para organizacion interna, estamos usando [Trello](https://trello.com/b/os8TqQu6/trabajo-practico-pps), nos permite de forma sencilla organizar cada iteracion
+
 
 ## Sábado 23/05 al 30/05 :computer:
 
-_Santiago Ortiz_ Splash animado
-_Sebastian Pasquini_ Icono
-_Alejandro Laborde Parodi_ Preparación de entorno de desarrollo, conexion a firebase y readme.
-
+```
+Santiago Ortiz Splash animado
+Sebastian Pasquini Icono
+Alejandro Laborde Parodi Preparación de entorno de desarrollo, conexion a firebase y readme.
+```
 
 ![La Comanda](../imagenes/presentacion.png)
