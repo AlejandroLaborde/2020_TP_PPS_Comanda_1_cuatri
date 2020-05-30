@@ -1,5 +1,5 @@
 # **2020_TP_PPS_Comanda_1_cuatri**
-![La Comanda](https://github.com/AlejandroLaborde/2020_TP_PPS_Comanda_1_cuatri/blob/master/proyecto/imagenes/presentacion.gif)
+![La Comanda](https://github.com/AlejandroLaborde/2020_TP_PPS_Comanda_1_cuatri/blob/master/proyecto/imagenes/presentacion.jpg)
 ### Desarrolladores 🔧
 
 ```
