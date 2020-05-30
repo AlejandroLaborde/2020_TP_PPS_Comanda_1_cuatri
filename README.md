@@ -19,7 +19,7 @@ Como herramienta para organizacion interna, estamos usando [Trello](https://trel
 
 
 ## Sábado 23/05 al 30/05 :computer:
-
+Build: [APK](https://github.com/AlejandroLaborde/2020_TP_PPS_Comanda_1_cuatri/tree/master/proyecto/builds/30-05-2020)
 ```
 Santiago Ortiz Splash -> animado
 Sebastian Pasquini -> Icono
