@@ -21,9 +21,9 @@ Como herramienta para organizacion interna, estamos usando [Trello](https://trel
 ## Sábado 23/05 al 30/05 :computer:
 
 ```
-Santiago Ortiz Splash animado
-Sebastian Pasquini Icono
-Alejandro Laborde Parodi Preparación de entorno de desarrollo, conexion a firebase y readme.
+Santiago Ortiz Splash -> animado
+Sebastian Pasquini -> Icono
+Alejandro Laborde Parodi -> Preparación de entorno de desarrollo, conexion a firebase y readme.
 ```
 
 ![La Comanda](../imagenes/presentacion.png)
