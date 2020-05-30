@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../services/login.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +9,13 @@ import { LoginService } from '../services/login.service';
 })
 export class HomePage {
 
-  constructor() {
-    
+  items;
+  constructor( private loginService: LoginService) {
+    this.items=this.loginService.items;
   }
 
+
+  alta(){
+    this.loginService.alta();
+  }
 }
