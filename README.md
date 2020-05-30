@@ -26,4 +26,13 @@ Sebastian Pasquini -> Icono
 Alejandro Laborde Parodi -> Preparación de entorno de desarrollo, conexion a firebase y readme.
 ```
 
+## Sábado 30/05 al 6/05 :computer:
+Build: [APK](https://github.com/AlejandroLaborde/2020_TP_PPS_Comanda_1_cuatri/tree/master/proyecto/builds/30-05-2020)
+
+Objetivos:
+```
+Santiago Ortiz -> 
+Sebastian Pasquini -> 
+Alejandro Laborde Parodi -> 
+```
 
