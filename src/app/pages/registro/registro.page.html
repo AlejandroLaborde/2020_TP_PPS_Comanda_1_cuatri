@@ -1,11 +1,47 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>registro</ion-title>
+  <ion-toolbar  color="primary">
+    <ion-title>Registro de usuario</ion-title>
+    <ion-button slot="start" fill="clear" [routerLink]="['/login']">
+      <ion-icon style="color: #fff; font-size: 25px;" name="arrow-back"></ion-icon>
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding color="dark">
+  <h3 class="titulo-registro"> Registro completo </h3>
+  <ion-item color="dark">
+    <ion-label position="floating">Nombre</ion-label> 
+    <ion-input type="text"></ion-input>
+    <!-- <ion-input type="text" [(ngModel)]="email" name="email"></ion-input> -->
+  </ion-item> 
+  <ion-item color="dark">
+    <ion-label position="floating">Apellido</ion-label> 
+    <ion-input type="password"></ion-input>
+    <!-- <ion-input type="password" [(ngModel)]="clave" name="clave"></ion-input> -->
+  </ion-item>
+  <ion-item color="dark">
+    <ion-label position="floating">Email</ion-label> 
+    <ion-input type="password"></ion-input>
+  </ion-item>
+  <ion-item color="dark">
+    <ion-label position="floating">Contraseña</ion-label> 
+    <ion-input type="password"></ion-input>
+  </ion-item>
+  <ion-item color="dark">
+    <ion-label position="floating">Confirmar contraseña</ion-label> 
+    <ion-input type="password"></ion-input>
+  </ion-item>
+  <ion-item color="dark">
+    <ion-button class="boton-registro" (click)="enviarDatos()">Enviar datos</ion-button>  
+  </ion-item>
+  <h3 class="titulo-registro"> Registrarse como anónimo </h3>
+  <ion-item color="dark">
+    <ion-label position="floating">Nombre</ion-label> 
+    <ion-input type="password"></ion-input>
+  </ion-item>
+  <ion-item color="dark">
+    <ion-button class="boton-registro" (click)="registroAnonimo()">Enviar nombre</ion-button>  
+  </ion-item>
 
-
-  <app-lector-qr></app-lector-qr>
+  <!-- <app-lector-qr></app-lector-qr> -->
 </ion-content>

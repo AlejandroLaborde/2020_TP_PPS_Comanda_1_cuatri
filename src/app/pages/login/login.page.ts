@@ -9,6 +9,10 @@ export class LoginPage implements OnInit {
 
   constructor() { }
 
+  onSubmitLogin(): void {
+
+  }
+
   ngOnInit() {
   }
 
