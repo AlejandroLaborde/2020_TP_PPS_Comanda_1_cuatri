@@ -14,6 +14,7 @@ export class Mesa{
         this.cantidadComenzales=cantidad;
         this.foto=foto;
         this.tipo=tipo;
+        this.estado=estado;
         if(id){
             id;
         }

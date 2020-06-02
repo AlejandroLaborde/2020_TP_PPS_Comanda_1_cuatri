@@ -8,6 +8,7 @@ export class Personal extends Usuario{
     public tipo:tipoPersonal;
     public DNI:String;
     public CUIL:String;
+    public contraseña;
 
     constructor(nombre:string,apellido:string,email:string,dni:string,cuil:string,tipo:tipoPersonal,foto:string,id?:string){
         if(id){

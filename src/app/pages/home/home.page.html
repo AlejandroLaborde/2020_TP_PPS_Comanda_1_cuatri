@@ -15,7 +15,7 @@
   
   <div id="container">
     <h1>Esto seria la "lista"</h1>
-    <p *ngFor="let item of items " >{{item | json}}</p>
+    <p *ngFor="let item of items " >{{item.id}}-{{item.estado}}</p>
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
     <button (click)="alta()">Alta</button>

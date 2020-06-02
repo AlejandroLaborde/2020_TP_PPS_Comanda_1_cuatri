@@ -12,7 +12,8 @@ export const environment = {
     storageBucket: 'lacomanda-pps.appspot.com',
     messagingSenderId: '48076322712',
     appId: '1:48076322712:web:9e07ac73135f63883a1ded'
-  }
+  },
+  hostFirebase:'https://lacomanda-pps.firebaseio.com/'
 };
 
 /*

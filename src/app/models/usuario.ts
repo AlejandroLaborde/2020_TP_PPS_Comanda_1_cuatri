@@ -8,6 +8,7 @@ export class Usuario{
     public nombre:string;
     public apellido:string;
     public email:string
+    
 
     
     constructor(nombre:string, apellido:string, email:string, id?:string){
