@@ -21,6 +21,7 @@ export class RegistroPage implements OnInit {
 
   recibirQR(datos) {
     console.log('RECIBIDO', datos);
+    alert('RECIBIDO'+ datos);
   }
 
   ngOnInit() {
