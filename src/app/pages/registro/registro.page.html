@@ -43,5 +43,5 @@
     <ion-button class="boton-registro" (click)="registroAnonimo()">Enviar nombre</ion-button>  
   </ion-item>
 
-  <!-- <app-lector-qr></app-lector-qr> -->
+  <app-lector-qr (enviarDatos) = "recibirQR($event)"></app-lector-qr> 
 </ion-content>

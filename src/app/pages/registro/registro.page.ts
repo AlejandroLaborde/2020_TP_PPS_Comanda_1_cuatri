@@ -8,7 +8,8 @@ import { ToastService } from 'src/app/services/toast.service';
 })
 export class RegistroPage implements OnInit {
 
-  constructor( private toastService: ToastService) { }
+
+  constructor( private toastService: ToastService ) { }
 
   enviarDatos(): void{
     this.toastService.confirmationToast('Chequeá tu email para la confirmación de tu registro');
@@ -16,6 +17,10 @@ export class RegistroPage implements OnInit {
 
   registroAnonimo(): void {
     this.toastService.confirmationToast('Podrás ingresar a la app cuando un supervisor lo apruebe');
+  }
+
+  recibirQR(datos) {
+    console.log('RECIBIDO', datos);
   }
 
   ngOnInit() {
