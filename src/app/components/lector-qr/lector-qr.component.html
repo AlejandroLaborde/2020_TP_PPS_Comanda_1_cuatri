@@ -1,3 +1,11 @@
-<p>
-  lector-qr works!
-</p>
+<div style="padding: 10px">
+  
+  <ion-button expand="block" color="danger" (click)="escanearQr()">Escanear QR</ion-button>
+
+  <div *ngIf="datoEscaneado">
+      <p>
+          Datos obtenidos: <b>{{ datoEscaneado["text"] }}</b>
+      </p>
+  </div>
+
+</div>
