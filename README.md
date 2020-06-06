@@ -27,12 +27,24 @@ Alejandro Laborde Parodi -> Preparación de entorno de desarrollo, conexion a fi
 ```
 
 ## Sábado 30/05 al 6/05 :computer:
-Build: [APK](https://github.com/AlejandroLaborde/2020_TP_PPS_Comanda_1_cuatri/tree/master/proyecto/builds/30-05-2020)
 
 Objetivos:
 ```
 Santiago Ortiz -> Componente lectura qr
 Sebastian Pasquini -> pagina login/registro
 Alejandro Laborde Parodi -> servicios de integracion
+
+Se logro cumplir con los objetivos fijados
+```
+
+## Sábado 06/05 al 13/05 :computer:
+
+Objetivos:
+```
+Santiago Ortiz ->
+Sebastian Pasquini -> 
+Alejandro Laborde Parodi -> 
+
+
 ```
 
