@@ -8,40 +8,59 @@
 </ion-header>
 
 <ion-content padding color="dark">
-  <h3 class="titulo-registro"> Registro completo </h3>
-  <ion-item color="dark">
-    <ion-label position="floating">Nombre</ion-label> 
-    <ion-input type="text"></ion-input>
-    <!-- <ion-input type="text" [(ngModel)]="email" name="email"></ion-input> -->
-  </ion-item> 
-  <ion-item color="dark">
-    <ion-label position="floating">Apellido</ion-label> 
-    <ion-input type="password"></ion-input>
-    <!-- <ion-input type="password" [(ngModel)]="clave" name="clave"></ion-input> -->
-  </ion-item>
-  <ion-item color="dark">
-    <ion-label position="floating">Email</ion-label> 
-    <ion-input type="password"></ion-input>
-  </ion-item>
-  <ion-item color="dark">
-    <ion-label position="floating">Contraseña</ion-label> 
-    <ion-input type="password"></ion-input>
-  </ion-item>
-  <ion-item color="dark">
-    <ion-label position="floating">Confirmar contraseña</ion-label> 
-    <ion-input type="password"></ion-input>
-  </ion-item>
-  <ion-item color="dark">
-    <ion-button class="boton-registro" (click)="enviarDatos()">Enviar datos</ion-button>  
-  </ion-item>
-  <h3 class="titulo-registro"> Registrarse como anónimo </h3>
-  <ion-item color="dark">
-    <ion-label position="floating">Nombre</ion-label> 
-    <ion-input type="password"></ion-input>
-  </ion-item>
-  <ion-item color="dark">
-    <ion-button class="boton-registro" (click)="registroAnonimo()">Enviar nombre</ion-button>  
-  </ion-item>
+  <section class="ion-padding" color="primary">
+
+    <ion-segment  scrollable 
+                  mode="md" 
+                  color="primary"
+                  (ionChange)="cambioDeRegistro( $event )">
+
+      <ion-segment-button mode="md" 
+                          name = "registroActual"                       
+                          *ngFor="let registro of registros"
+                          [value]="registro.id">
+
+      <ion-label text-capitalize>{{ registro.tipo }}</ion-label>
+      </ion-segment-button>
+
+    </ion-segment>
+  </section>
+  <div *ngIf="registroCompleto">
+    <h4 class="titulo-registro"> Completar los siguientes datos: </h4>
+    <ion-item color="dark">
+      <ion-label position="floating">Nombre</ion-label> 
+      <ion-input id="nombre" type="text" [(ngModel)]="nombre" name="nombre"></ion-input>
+    </ion-item> 
+    <ion-item color="dark">
+      <ion-label position="floating">Apellido</ion-label> 
+      <ion-input id="apellido" type="text" [(ngModel)]="apellido" name="apellido"></ion-input>
+    </ion-item>
+    <ion-item color="dark">
+      <ion-label position="floating">Email</ion-label> 
+      <ion-input type="email" [(ngModel)]="email" name="email"></ion-input>
+    </ion-item>
+    <ion-item color="dark">
+      <ion-label position="floating">Contraseña</ion-label> 
+      <ion-input type="password" [(ngModel)]="clave" name="clave"></ion-input>
+    </ion-item>
+    <ion-item color="dark">
+      <ion-label position="floating">Confirmar contraseña</ion-label> 
+      <ion-input type="password" [(ngModel)]="confirmarClave" name="confirmarClave"></ion-input>
+    </ion-item>
+    <ion-item color="dark">
+      <ion-button class="boton-registro" (click)="enviarDatos()">Enviar datos</ion-button>  
+    </ion-item>
+  </div>
+  <div *ngIf="!registroCompleto">
+    <h4 class="titulo-registro"> Registrarse con un alias </h4>
+    <ion-item color="dark">
+      <ion-label position="floating">Alias</ion-label> 
+      <ion-input type="text" [(ngModel)]="alias" name="alias"></ion-input>
+    </ion-item>
+    <ion-item color="dark">
+      <ion-button class="boton-registro" (click)="registroAnonimo()">Enviar alias</ion-button>  
+    </ion-item>
+  </div>
 
   <app-lector-qr (enviarDatos) = "recibirQR($event)"></app-lector-qr> 
 </ion-content>
