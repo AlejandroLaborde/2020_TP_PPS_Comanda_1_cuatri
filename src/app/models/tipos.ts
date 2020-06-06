@@ -1,4 +1,10 @@
 
+export enum estadoProducto{
+    pendiente= 'espera',
+    preparandose= 'preparacion',
+    listo= 'listo',
+}
+
 export enum estadoPedido{
     pendiente= 'espera',
     preparandose= 'preparacion',
