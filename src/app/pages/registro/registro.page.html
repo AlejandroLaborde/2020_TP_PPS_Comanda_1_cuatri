@@ -13,6 +13,7 @@
     <ion-segment  scrollable 
                   mode="md" 
                   color="primary"
+                  value = "0"
                   (ionChange)="cambioDeRegistro( $event )">
 
       <ion-segment-button mode="md" 
@@ -26,7 +27,6 @@
     </ion-segment>
   </section>
   <div *ngIf="registroCompleto">
-    <h4 class="titulo-registro"> Completar los siguientes datos: </h4>
     <ion-item color="dark">
       <ion-label position="floating">Nombre</ion-label> 
       <ion-input id="nombre" type="text" [(ngModel)]="nombre" name="nombre"></ion-input>
@@ -47,20 +47,26 @@
       <ion-label position="floating">Confirmar contraseña</ion-label> 
       <ion-input type="password" [(ngModel)]="confirmarClave" name="confirmarClave"></ion-input>
     </ion-item>
-    <ion-item color="dark">
-      <ion-button class="boton-registro" (click)="enviarDatos()">Enviar datos</ion-button>  
-    </ion-item>
+    <ion-button class="boton-registro" expand="block" (click)="enviarDatos()">Enviar datos</ion-button>
+    <div style="text-align: center;">
+      <ion-button (click)="enviarDatos()" class="boton-foto" [disabled]="!finalizoRegistro">
+        <div><img src="../../../assets/camara.png" alt=""></div>        
+      </ion-button>  
+    </div>
   </div>
   <div *ngIf="!registroCompleto">
-    <h4 class="titulo-registro"> Registrarse con un alias </h4>
+    <ion-item color="dark">
+      <ion-label>Registrarse con un alias</ion-label> 
+    </ion-item>
     <ion-item color="dark">
       <ion-label position="floating">Alias</ion-label> 
       <ion-input type="text" [(ngModel)]="alias" name="alias"></ion-input>
     </ion-item>
-    <ion-item color="dark">
-      <ion-button class="boton-registro" (click)="registroAnonimo()">Enviar alias</ion-button>  
-    </ion-item>
+    <ion-button class="boton-registro" expand="block" (click)="registroAnonimo()">Enviar alias</ion-button>
   </div>
-
-  <app-lector-qr (enviarDatos) = "recibirQR($event)"></app-lector-qr> 
 </ion-content>
+<ion-footer>
+  <ion-toolbar *ngIf="registroCompleto">
+    <app-lector-qr (enviarDatos) = "recibirQR($event)"></app-lector-qr>
+  </ion-toolbar>
+</ion-footer>

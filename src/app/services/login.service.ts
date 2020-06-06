@@ -35,5 +35,5 @@ export class LoginService {
   public logOut(){
     return this.angularFireAuth.signOut();
   }
-  
+
 }

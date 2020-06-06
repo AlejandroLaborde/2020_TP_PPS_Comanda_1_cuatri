@@ -1,14 +1,23 @@
 .boton-registro {
-    width: 150px;
     height: 40px;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 
 .titulo-registro {
     text-align: center;
-    margin-top: 30px;
+    margin-top: 15px;
+}
+
+.boton-foto {
+    height: 100px;
+    width: 150px;
+    margin-top: 40px;
 }
 
 ion-segment-button{
     color: white;
 }
+
+ion-toolbar{
+    --ion-background-color:#222428;
+  }

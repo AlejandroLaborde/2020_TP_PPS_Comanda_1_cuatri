@@ -17,6 +17,7 @@ export class RegistroPage implements OnInit {
   alias: string;
   registros = [{ id: 0, tipo: 'Registro completo' }, { id: 1, tipo: 'Registro anónimo' }];
   registroCompleto = true;
+  finalizoRegistro = false;
 
   constructor( private toastService: ToastService, private _registroService: RegistroService ) { }
 
@@ -52,6 +53,7 @@ export class RegistroPage implements OnInit {
   enviarDatos() {
     if ( this.validarSoloLetras( this.nombre ) && this.validarSoloLetras(this.apellido) && this.validarEmail(this.email)
          && this.validarContraseña(this.clave, this.confirmarClave )) {
+          this.finalizoRegistro = true;
           this.toastService.confirmationToast('Chequeá tu email para la confirmación de tu registro');
     }
   }
