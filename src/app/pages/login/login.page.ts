@@ -4,6 +4,7 @@ import { Cliente } from 'src/app/models/cliente';
 import { tipoCliente } from 'src/app/models/tipos';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
+  cliente: Cliente;
   clientes;
   clientesAnonimos;
   email;
@@ -19,7 +21,8 @@ export class LoginPage implements OnInit {
   alias;
   tipoLogin = 'completo';
 
-  constructor( private clienteService: ClientesService, private loginService: LoginService, private router: Router ) { }
+  constructor( private clienteService: ClientesService, private loginService: LoginService, private router: Router,
+               private toastService: ToastService ) { }
 
   ngOnInit() {
     this.clienteService.obtenerClientes().snapshotChanges().forEach( clientesSnapshot => {
@@ -44,6 +47,7 @@ export class LoginPage implements OnInit {
   changeClienteRegistrado( id ) {
     for (const cliente of this.clientes ) {
       if ( cliente.id === id ) {
+        this.cliente = cliente;
         this.email = cliente.email;
         this.clave = cliente.clave;
       }
@@ -53,6 +57,7 @@ export class LoginPage implements OnInit {
   changeClienteAnonimo( alias ) {
     for (const cliente of this.clientesAnonimos ) {
       if ( cliente.nombre === alias ) {
+        this.cliente = cliente;
         this.alias = cliente.nombre;
       }
     }
@@ -60,12 +65,17 @@ export class LoginPage implements OnInit {
 
   onSubmitLogin(): void {
     if ( this.tipoLogin === 'completo' ) {
-      this.loginService.logIn(this.email, this.clave)
-      .then( respuesta => {
-        this.email = '';
-        this.clave = '';
-        this.router.navigate(['/home']);
-      });
+      if ( this.cliente.aprobado ) {
+        this.loginService.logIn(this.email, this.clave)
+        .then( respuesta => {
+          this.email = '';
+          this.clave = '';
+          this.router.navigate(['/home']);
+        });
+      }
+      else {
+        this.toastService.errorToast('Su registro todavía no fue aprobado');
+      }
     }
     else {
       for (const cliente of this.clientesAnonimos ) {

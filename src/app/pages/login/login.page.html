@@ -21,7 +21,7 @@
       <ion-radio slot="start" value="anonimo"></ion-radio>
     </ion-item>
   </ion-radio-group>
-  <div *ngIf="tipoLogin === 'completo'">
+  <div style="margin-top: 20px;" *ngIf="tipoLogin === 'completo'">
     <ion-item color="dark">
       <ion-label position="floating">Correo electrónico</ion-label> 
       <ion-input type="text" [(ngModel)]="email" name="email"></ion-input>
@@ -31,7 +31,7 @@
       <ion-input type="password" [(ngModel)]="clave" name="clave"></ion-input>
     </ion-item>
   </div>
-  <div style="height: 112px;" *ngIf="tipoLogin === 'anonimo'">
+  <div style="height: 132px;" *ngIf="tipoLogin === 'anonimo'">
     <ion-item color="dark">
       <ion-label position="floating">Alias</ion-label> 
       <ion-input type="text" [(ngModel)]="alias" name="alias"></ion-input>
