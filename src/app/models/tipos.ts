@@ -14,7 +14,7 @@ export enum estadoPedido{
     abonado= 'abonado'
 }
 
-export enum estadoCLiente{
+export enum estadoCliente{
     espera= 'espera',
     sentado='comiendo',
     off='off'

@@ -14,7 +14,7 @@ export class Usuario{
     constructor(nombre:string, apellido:string, email:string, id?:string){
         
         this.nombre=nombre;
-        this,apellido = apellido;
+        this.apellido = apellido;
         this.email = email;
 
         if(id){
