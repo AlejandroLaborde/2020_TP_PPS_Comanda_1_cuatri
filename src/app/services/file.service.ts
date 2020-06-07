@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFireStorage } from '@angular/fire/storage/storage';
+import { AngularFireStorage, AngularFireUploadTask } from '@angular/fire/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -17,5 +17,9 @@ export class FileService {
   public referenciaCloudStorage(nombreArchivo: string) {
         return this.storage.ref(nombreArchivo).getDownloadURL();
   }
-  
-} 
+
+  public guardarEnStorage( datosImagen, nombreImagen ): AngularFireUploadTask {
+    const imagen = `data:image/jpeg;base64,${datosImagen}`;
+    return this.storage.ref( nombreImagen ).putString(imagen, 'data_url');
+  }
+}

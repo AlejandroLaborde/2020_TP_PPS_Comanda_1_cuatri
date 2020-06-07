@@ -10,6 +10,7 @@ export class Cliente extends Usuario{
     public clave: string;
     public aprobado: boolean;
     public estado: estadoCliente;
+    public idBD: string;
 
     constructor(nombre: string, email: string, tipo: tipoCliente, clave: string, aprobado: boolean, estadoCliente: estadoCliente,
                 apellido?: string, id?: string, foto?: string){

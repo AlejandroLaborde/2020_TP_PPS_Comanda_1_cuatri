@@ -3,6 +3,9 @@ import { ToastService } from 'src/app/services/toast.service';
 import { RegistroService } from 'src/app/services/registro.service';
 import { Cliente } from 'src/app/models/cliente';
 import { tipoCliente, estadoCliente } from 'src/app/models/tipos';
+import { CameraService } from 'src/app/services/camara.service';
+import { FileService } from 'src/app/services/file.service';
+import { ClientesService } from 'src/app/services/clientes.service';
 
 @Component({
   selector: 'app-registro',
@@ -22,7 +25,8 @@ export class RegistroPage implements OnInit {
   finalizoRegistro = false;
   cliente: Cliente;
 
-  constructor( private toastService: ToastService, private registroService: RegistroService ) { }
+  constructor( private toastService: ToastService, private registroService: RegistroService, private cameraService: CameraService,
+               private fileService: FileService, private clientesService: ClientesService ) { }
 
 
   cambioDeRegistro( event ) {
@@ -63,6 +67,7 @@ export class RegistroPage implements OnInit {
         this.cliente.id = respuesta.user.uid;
         this.registroService.registraClienteEnBD( this.cliente)
         .subscribe( res => {
+          this.cliente.idBD = res['name'];
           this.vaciarInputs();
           this.finalizoRegistro = true;
           this.toastService.confirmationToast('Chequeá tu email para la confirmación de tu registro');
@@ -77,6 +82,24 @@ export class RegistroPage implements OnInit {
     .subscribe( res => {
       this.alias = '';
       this.toastService.confirmationToast('Ingrese a la aplicación utilizando el alias registrado');
+    });
+  }
+
+  sacarFoto() {
+    this.cameraService.sacarFoto()
+    .then( datosImagen => {
+      if (datosImagen !== 'No Image Selected') {
+        this.fileService.guardarEnStorage(datosImagen, this.cliente.id)
+        .then( respuesta => {
+          this.fileService.referenciaCloudStorage( this.cliente.id )
+          .subscribe( url => {
+            this.clientesService.updateFotoCliente( this.cliente.idBD, url)
+            .subscribe( res => {
+              this.toastService.confirmationToast('Su foto se guardó correctamente');
+            });
+          });
+        });
+      }
     });
   }
 
