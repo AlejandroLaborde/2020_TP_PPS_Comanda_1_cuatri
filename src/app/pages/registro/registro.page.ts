@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastService } from 'src/app/services/toast.service';
 import { RegistroService } from 'src/app/services/registro.service';
+import { Cliente } from 'src/app/models/cliente';
+import { tipoCliente, estadoCLiente } from 'src/app/models/tipos';
 
 @Component({
   selector: 'app-registro',
@@ -18,8 +20,9 @@ export class RegistroPage implements OnInit {
   registros = [{ id: 0, tipo: 'Registro completo' }, { id: 1, tipo: 'Registro anónimo' }];
   registroCompleto = true;
   finalizoRegistro = false;
+  cliente: Cliente;
 
-  constructor( private toastService: ToastService, private _registroService: RegistroService ) { }
+  constructor( private toastService: ToastService, private registroService: RegistroService ) { }
 
 
   cambioDeRegistro( event ) {
@@ -52,9 +55,19 @@ export class RegistroPage implements OnInit {
 
   enviarDatos() {
     if ( this.validarSoloLetras( this.nombre ) && this.validarSoloLetras(this.apellido) && this.validarEmail(this.email)
-         && this.validarContraseña(this.clave, this.confirmarClave )) {
+        && this.validarContraseña(this.clave, this.confirmarClave )) {
+
+      this.cliente = new Cliente(this.nombre, this.email, tipoCliente.registrado, this.clave, false, estadoCLiente.off);
+      this.registroService.registraCliente( this.cliente )
+      .then( respuesta => {
+        this.cliente.id = respuesta.user.uid;
+        this.registroService.registraClienteEnBD( this.cliente)
+        .subscribe( res => {
+          console.log( res );
           this.finalizoRegistro = true;
           this.toastService.confirmationToast('Chequeá tu email para la confirmación de tu registro');
+        });
+      });
     }
   }
 

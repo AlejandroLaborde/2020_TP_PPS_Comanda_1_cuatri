@@ -11,7 +11,8 @@ export class Cliente extends Usuario{
     public aprobado: boolean;
     public estado: estadoCLiente;
 
-    constructor(nombre: string, email: string, tipo: tipoCliente, foto: string, clave: string, aprobado: boolean, estadoCLiente: estadoCLiente, id?: string, apellido?: string){
+    constructor(nombre: string, email: string, tipo: tipoCliente, clave: string, aprobado: boolean, estadoCLiente: estadoCLiente, 
+                id?: string, apellido?: string, foto?: string){
 
         if (tipo === 'anonimo'){
             if (id){
