@@ -5,29 +5,53 @@
 </ion-header>
 
 <ion-content padding color="dark">
-  <img src="../../../assets/logo.png" alt="" >
-<ion-item color="dark">
-  <ion-label position="floating">Correo electrónico</ion-label> 
-  <ion-input type="text"></ion-input>
-  <!-- <ion-input type="text" [(ngModel)]="email" name="email"></ion-input> -->
-</ion-item> 
-<ion-item color="dark">
-  <ion-label position="floating">Contraseña</ion-label> 
-  <ion-input type="password"></ion-input>
-  <!-- <ion-input type="password" [(ngModel)]="clave" name="clave"></ion-input> -->
-</ion-item>
-<br>
-<ion-item color="dark">
-  <ion-label position="stacked">Usuario</ion-label>
-  <ion-select placeholder="Seleccione uno: ">
-    <ion-select-option *ngFor="let cliente of clientes"> {{ cliente.nombre}} </ion-select-option>
-  </ion-select>
-  <!-- <ion-select (ionChange)="onChange($event.target.value)" placeholder="Seleccione uno: ">
-    <ion-select-option *ngFor="let usuario of usuarios" value={{usuario.id}}> {{usuario.nombre}} </ion-select-option>
-  </ion-select> -->
-</ion-item>
+  <div style="text-align: center;">
+    <img src="../../../assets/logo.png" alt="" class="imagen-login">
+  </div>
+  <ion-radio-group value="completo" (ionChange)="cambiarTipoDeLogin($event)">
+    <ion-list-header color = "dark">
+      <ion-label>Tipo de login</ion-label>
+    </ion-list-header>  
+    <ion-item color = "dark">
+      <ion-label>Completo</ion-label>
+      <ion-radio slot="start" value="completo"></ion-radio>
+    </ion-item>  
+    <ion-item color = "dark">
+      <ion-label>Anónimo</ion-label>
+      <ion-radio slot="start" value="anonimo"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+  <div *ngIf="tipoLogin === 'completo'">
+    <ion-item color="dark">
+      <ion-label position="floating">Correo electrónico</ion-label> 
+      <ion-input type="text" [(ngModel)]="email" name="email"></ion-input>
+    </ion-item> 
+    <ion-item color="dark">
+      <ion-label position="floating">Contraseña</ion-label> 
+      <ion-input type="password" [(ngModel)]="clave" name="clave"></ion-input>
+    </ion-item>
+  </div>
+  <div style="height: 112px;" *ngIf="tipoLogin === 'anonimo'">
+    <ion-item color="dark">
+      <ion-label position="floating">Alias</ion-label> 
+      <ion-input type="text" [(ngModel)]="alias" name="alias"></ion-input>
+    </ion-item> 
+  </div>
+  <br>
+  <ion-item color="dark" *ngIf="tipoLogin === 'completo'">
+    <ion-label position="stacked">Usuario</ion-label>
+    <ion-select (ionChange)="changeClienteRegistrado($event.target.value)" placeholder="Seleccione uno: ">
+      <ion-select-option *ngFor="let cliente of clientes" value={{cliente.id}}> {{ cliente.nombre}} {{cliente.apellido}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item color="dark" *ngIf="tipoLogin === 'anonimo'">
+    <ion-label position="stacked">Usuario</ion-label>
+    <ion-select (ionChange)="changeClienteAnonimo($event.target.value)" placeholder="Seleccione uno: ">
+      <ion-select-option *ngFor="let cliente of clientesAnonimos" value={{cliente.nombre}}> {{ cliente.nombre}} </ion-select-option>
+    </ion-select>
+  </ion-item>
 
-<ion-button expand="block" (click) = "onSubmitLogin()" class="boton-login">Entrar</ion-button>
-<ion-button expand="block" [routerLink]="['/registro']" class="boton-login">Registrarme</ion-button>
+  <ion-button expand="block" (click) = "onSubmitLogin()" class="boton-login">Entrar</ion-button>
+  <ion-button expand="block" [routerLink]="['/registro']" class="boton-login">Registrarme</ion-button>
 
 </ion-content>
