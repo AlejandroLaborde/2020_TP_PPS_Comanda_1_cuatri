@@ -72,6 +72,9 @@ export class RegistroPage implements OnInit {
           this.finalizoRegistro = true;
           this.toastService.confirmationToast('Chequeá tu email para la confirmación de tu registro');
         });
+      })
+      .catch(err => {
+        this.toastService.errorToast(err);
       });
     }
   }
@@ -98,8 +101,14 @@ export class RegistroPage implements OnInit {
               this.toastService.confirmationToast('Su foto se guardó correctamente');
             });
           });
+        })
+        .catch(err => {
+          this.toastService.errorToast(err);
         });
       }
+    })
+    .catch(err => {
+      this.toastService.errorToast(err);
     });
   }
 
