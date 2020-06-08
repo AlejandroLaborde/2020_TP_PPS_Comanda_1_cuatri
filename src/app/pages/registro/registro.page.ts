@@ -51,7 +51,7 @@ export class RegistroPage implements OnInit {
 
   validarContraseña( clave, claveConfirmada ) {
     if ( clave !== claveConfirmada ) {
-      this.toastService.errorToast('La contraseña se confirmó correctamente');
+      this.toastService.errorToast('La contraseña no se confirmó correctamente');
       return false;
     }
     return true;

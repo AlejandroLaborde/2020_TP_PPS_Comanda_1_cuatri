@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
-import { DataService } from './data.service';
-
 
 @Injectable({
   providedIn: 'root'
@@ -17,10 +15,7 @@ export class CameraService {
     correctOrientation: true
   };
 
-  url;
-
-  constructor( private camera: Camera,
-               private dataService: DataService  ) { }
+  constructor( private camera: Camera  ) { }
 
   sacarFoto() {
     return this.camera.getPicture(this.options)
@@ -30,20 +25,6 @@ export class CameraService {
     .catch(error => {
       console.error(error);
       return error;
-    });
-  }
-
-  guardarFoto( datosImagen, categoria ) {
-    return this.dataService.guardarEnStorage( datosImagen )
-    .then( respuesta => {
-      respuesta.ref.getDownloadURL()
-      .then( url => {
-        this.url = url;
-        console.log( this.url );
-      })
-      .catch( error => {
-        console.log( error );
-      });
     });
   }
 }
