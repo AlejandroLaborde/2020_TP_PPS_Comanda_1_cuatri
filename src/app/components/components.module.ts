@@ -4,6 +4,7 @@ import { LectorQRComponent } from './lector-qr/lector-qr.component';
 
 
 
+
 @NgModule({
   declarations: [
     LectorQRComponent

@@ -30,4 +30,4 @@ export class RegistroService {
   public registraClienteEnBD( cliente: Cliente) {
     return this.httpClient.post(`${environment.hostFirebase}/clientes.json`, cliente);
   }
-}
+} 

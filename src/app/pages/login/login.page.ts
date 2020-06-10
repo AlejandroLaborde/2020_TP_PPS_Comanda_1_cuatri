@@ -70,7 +70,7 @@ export class LoginPage implements OnInit {
         .then( respuesta => {
           this.email = '';
           this.clave = '';
-          this.router.navigate(['/home']);
+          this.router.navigate(['/cliente']);
         });
       }
       else {

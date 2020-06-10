@@ -1,9 +1,18 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>cliente</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>ACA NOMBRE CLIENTE</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding color="dark">
+
+  <div class="qr">
+    <img  style="width: 80%;justify-content: center;" src="../../../assets/qr.png" alt="">
+  </div>
 
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <app-lector-qr (click)="respuestaLector('das')" (enviarDatos)="respuestaLector($event)" ></app-lector-qr>
+  </ion-toolbar>
+</ion-footer>

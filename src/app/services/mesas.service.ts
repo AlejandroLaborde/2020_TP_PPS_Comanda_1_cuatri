@@ -25,6 +25,10 @@ export class MesasService {
     return this.httpClient.patch(`${environment.hostFirebase}/mesas/${idMesa}.json`,{estado:estado});
   }
 
+  obtenerMesa(idMesa){
+    return this.httpClient.get(`${environment.hostFirebase}/mesas/${idMesa}.json`).pipe(map((datos:any)=>{return datos.estado}));
+  }
+
   obtenerMesas(){
     return this.mesas;
   }
