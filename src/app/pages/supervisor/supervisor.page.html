@@ -4,6 +4,27 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content> 
+<ion-list padding *ngFor="let cliente of clientes">
+  <ion-item *ngIf="!cliente.aprobado">
+    <p>{{cliente.nombre}} {{cliente.apellido}}</p>
+  </ion-item>
+
+</ion-list>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
 
 </ion-content>
