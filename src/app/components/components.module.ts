@@ -3,13 +3,12 @@ import { CommonModule } from '@angular/common';
 import { LectorQRComponent } from './lector-qr/lector-qr.component';
 
 
-
 @NgModule({
   declarations: [
     LectorQRComponent
   ],
   exports:[
-    LectorQRComponent
+    LectorQRComponent,
   ],
   imports: [
     CommonModule

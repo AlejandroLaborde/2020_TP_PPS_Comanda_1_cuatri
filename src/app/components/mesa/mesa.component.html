@@ -1,0 +1,27 @@
+
+
+
+
+
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/core@next/css/ionic.bundle.css"/> -->
+
+<ion-header translucent>
+    <ion-toolbar>
+      <ion-title>{{this.mesa.nombrePublico}}</ion-title>
+      <ion-buttons slot="end">
+        <ion-button (click)="dismissModal()"><ion-icon name="close-outline"></ion-icon></ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content >
+    <ion-card>
+        <img [src]=[mesa.foto]  style="height: 50vh;" />
+        <ion-card-header>
+            <ion-card-subtitle>Tipo de mesa: {{mesa.tipo}}</ion-card-subtitle>
+            <ion-card-title>Estado: {{mesa.estado}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content [hidden]="mesa.estado!='ocupada'" >
+          La mesa a la que intenta acceder se encuentra actualmente ocupada. Disculpe las molestias
+        </ion-card-content>
+      </ion-card>
+  </ion-content>

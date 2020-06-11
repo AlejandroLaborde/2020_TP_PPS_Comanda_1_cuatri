@@ -1,5 +1,6 @@
 
 export enum estadoProducto{
+    
     pendiente= 'espera',
     preparandose= 'preparacion',
     listo= 'listo',
