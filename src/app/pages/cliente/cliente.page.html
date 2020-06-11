@@ -9,10 +9,10 @@
   <div class="qr">
     <img  style="width: 80%;justify-content: center;" src="../../../assets/qr.png" alt="">
   </div>
-
+  <p>{{lector | json}}</p> 
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <app-lector-qr (click)="respuestaLector('das')" (enviarDatos)="respuestaLector($event)" ></app-lector-qr>
+    <app-lector-qr (click)="respuestaLector()" (enviarDatos)="respuestaLector($event)" ></app-lector-qr>
   </ion-toolbar>
 </ion-footer>

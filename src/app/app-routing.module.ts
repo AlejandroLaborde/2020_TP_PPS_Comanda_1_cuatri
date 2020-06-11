@@ -13,7 +13,9 @@ const routes: Routes = [
     path: 'cliente',
     loadChildren: () => import('./pages/cliente/cliente.module').then( m => m.ClientePageModule)
   },
-  {  path: '',    redirectTo: 'home',    pathMatch: 'full'  },
+  {  path: '',    redirectTo: 'login',    pathMatch: 'full'  },
+  
+
 
 
 

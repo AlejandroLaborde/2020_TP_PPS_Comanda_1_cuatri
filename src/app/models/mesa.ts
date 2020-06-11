@@ -9,12 +9,14 @@ export class Mesa{
     public foto:string;
     public tipo:tipoMesa;
     public estado:estadoMesa;
+    public nombrePublico:string;
 
-    constructor(cantidad:number, foto:string,tipo:tipoMesa, estado:estadoMesa, id?:string){
+    constructor(cantidad:number, foto:string,tipo:tipoMesa, estado:estadoMesa,nombrePublico:string, id?:string){
         this.cantidadComenzales=cantidad;
         this.foto=foto;
         this.tipo=tipo;
         this.estado=estado;
+        this.nombrePublico=nombrePublico;
         if(id){
             id;
         }
