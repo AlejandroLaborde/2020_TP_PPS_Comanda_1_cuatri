@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientesService } from 'src/app/services/clientes.service';
+import { UsuariosService } from 'src/app/services/usuarios.service';
 import { Cliente } from 'src/app/models/cliente';
-import { tipoCliente } from 'src/app/models/tipos';
+import { tipoCliente, tipoPersonal } from 'src/app/models/tipos';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/services/toast.service';
+import { Personal } from 'src/app/models/personal';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,9 @@ import { ToastService } from 'src/app/services/toast.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-
+  
+  usuario: Personal;
+  usuarios = [];
   cliente: Cliente;
   clientes;
   clientesAnonimos;
@@ -22,7 +26,7 @@ export class LoginPage implements OnInit {
   tipoLogin = 'completo';
 
   constructor( private clienteService: ClientesService, private loginService: LoginService, private router: Router,
-               private toastService: ToastService ) { }
+               private toastService: ToastService, private usuarioService: UsuariosService) { }
 
   ngOnInit() {
     this.clienteService.obtenerClientes().snapshotChanges().forEach( clientesSnapshot => {
@@ -30,7 +34,7 @@ export class LoginPage implements OnInit {
       this.clientesAnonimos = [];
       clientesSnapshot.forEach( clienteSnapshot => {
         const cliente = clienteSnapshot.payload.toJSON() as Cliente;
-        if ( cliente.tipo === tipoCliente.registrado ){
+        if ( cliente.tipo === tipoCliente.registrado){
           this.clientes.push(cliente);
         }
         else {
@@ -38,6 +42,15 @@ export class LoginPage implements OnInit {
         }
       });
     });
+
+    // Para traer empleados
+    this.usuarioService.obtenerUsuarios().snapshotChanges().forEach( usuariosSnapshot => {
+      usuariosSnapshot.forEach( snapshot => {
+        const Personal = snapshot.payload.toJSON() as Personal;
+        this.usuarios.push(Personal);
+      });
+    });
+    
   }
 
   cambiarTipoDeLogin( tipoLogin ) {
@@ -63,8 +76,10 @@ export class LoginPage implements OnInit {
     }
   }
 
+  
   onSubmitLogin(): void {
     if ( this.tipoLogin === 'completo' ) {
+      console.log(this.usuarios);
       if ( this.cliente.aprobado ) {
         this.loginService.logIn(this.email, this.clave)
         .then( respuesta => {
