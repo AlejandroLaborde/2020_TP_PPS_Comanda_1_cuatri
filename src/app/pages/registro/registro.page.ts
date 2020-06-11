@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastService } from 'src/app/services/toast.service';
 import { RegistroService } from 'src/app/services/registro.service';
 import { Cliente } from 'src/app/models/cliente';
-import { tipoCliente, estadoCliente } from 'src/app/models/tipos';
+import { tipoCliente, estadoCliente, tipoPersonal } from 'src/app/models/tipos';
 import { CameraService } from 'src/app/services/camara.service';
 import { FileService } from 'src/app/services/file.service';
 import { ClientesService } from 'src/app/services/clientes.service';
