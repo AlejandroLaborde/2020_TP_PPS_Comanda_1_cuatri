@@ -37,13 +37,33 @@
       <ion-input type="text" [(ngModel)]="alias" name="alias"></ion-input>
     </ion-item> 
   </div>
-  <br>
-  <ion-item color="dark" *ngIf="tipoLogin === 'completo'">
-    <ion-label position="stacked">Usuario</ion-label>
-    <ion-select (ionChange)="changeClienteRegistrado($event.target.value)" placeholder="Seleccione uno: ">
-      <ion-select-option *ngFor="let cliente of clientes" value={{cliente.id}}> {{ cliente.nombre}} {{cliente.apellido}}</ion-select-option>
-    </ion-select>
-  </ion-item>
+  <section  color="primary" *ngIf="tipoLogin === 'completo'">
+    <ion-segment  scrollable mode="md" color="primary">
+      <ion-segment-button mode="md" (click)="select = true">
+        <ion-label text-capitalize>clientes</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button mode="md" (click)="select = false">
+        <ion-label text-capitalize>personal</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </section>
+
+  <div color="dark" *ngIf="tipoLogin === 'completo'">
+    <ion-item color="dark" *ngIf="select">
+      <ion-label position="stacked">Usuario</ion-label>
+      <ion-select (ionChange)="changeClienteRegistrado($event.target.value)" placeholder="Seleccione uno: ">
+        <ion-select-option *ngFor="let cliente of clientes" value={{cliente.id}}> {{ cliente.nombre}} {{cliente.apellido}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item color="dark" *ngIf="!select">
+      <ion-label position="stacked">Usuario</ion-label>
+      <ion-select (ionChange)="changePersonal($event.target.value)" placeholder="Seleccione uno: ">
+        <ion-select-option *ngFor="let usuario of usuarios" value={{usuario.id}}> {{ usuario.nombre}} {{usuario.apellido}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+  
   <ion-item color="dark" *ngIf="tipoLogin === 'anonimo'">
     <ion-label position="stacked">Usuario</ion-label>
     <ion-select (ionChange)="changeClienteAnonimo($event.target.value)" placeholder="Seleccione uno: ">
