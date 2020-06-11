@@ -13,7 +13,10 @@ export const environment = {
     messagingSenderId: '48076322712',
     appId: '1:48076322712:web:9e07ac73135f63883a1ded'
   },
-  hostFirebase:'https://lacomanda-pps.firebaseio.com/'
+  hostFirebase:'https://lacomanda-pps.firebaseio.com/',
+  urlOneSignal: 'https://onesignal.com/api/v1/notifications',
+  authorizationPush: 'Basic ZmFiNjExMGUtZTFlYi00MjViLTg5ODItZmRkOTliYWRlZjg4',
+  oneSignalAppId: '02d56b36-8217-4866-a871-5334f28c91dd'
 };
 
 /*

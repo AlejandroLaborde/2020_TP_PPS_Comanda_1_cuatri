@@ -6,6 +6,7 @@ import { tipoCliente, estadoCliente, tipoPersonal } from 'src/app/models/tipos';
 import { CameraService } from 'src/app/services/camara.service';
 import { FileService } from 'src/app/services/file.service';
 import { ClientesService } from 'src/app/services/clientes.service';
+import { PushService } from 'src/app/services/push.service';
 
 @Component({
   selector: 'app-registro',
@@ -26,7 +27,7 @@ export class RegistroPage implements OnInit {
   cliente: Cliente;
 
   constructor( private toastService: ToastService, private registroService: RegistroService, private cameraService: CameraService,
-               private fileService: FileService, private clientesService: ClientesService ) { }
+               private fileService: FileService, private clientesService: ClientesService, private pushService: PushService ) { }
 
 
   cambioDeRegistro( event ) {
@@ -67,6 +68,7 @@ export class RegistroPage implements OnInit {
         this.cliente.id = respuesta.user.uid;
         this.registroService.registraClienteEnBD( this.cliente)
         .subscribe( res => {
+          this.pushService.enviarNotificacionSupervisor( this.cliente );
           this.cliente.idBD = res['name'];
           this.vaciarInputs();
           this.finalizoRegistro = true;
