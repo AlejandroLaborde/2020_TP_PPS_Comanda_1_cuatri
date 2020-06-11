@@ -20,7 +20,11 @@ export class RegistroService {
    * Da de alta en Firebase Auth la persona con email y contraseña
    */
   public registraPersonal(usuario: Personal){
-    return this.angularFireAuth.createUserWithEmailAndPassword(usuario.email, usuario.contraseña);
+    return this.angularFireAuth.createUserWithEmailAndPassword(usuario.email, usuario.clave);
+  }
+  
+  public registraPersonalEnBD( usuario: Personal) {
+    return this.httpClient.post(`${environment.hostFirebase}/personal.json`, usuario);
   }
 
   public registraCliente(cliente: Cliente){
@@ -30,4 +34,6 @@ export class RegistroService {
   public registraClienteEnBD( cliente: Cliente) {
     return this.httpClient.post(`${environment.hostFirebase}/clientes.json`, cliente);
   }
+
+ 
 } 
