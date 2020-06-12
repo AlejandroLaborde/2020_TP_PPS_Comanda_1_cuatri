@@ -24,6 +24,7 @@ export class LoginPage implements OnInit {
   clave;
   alias;
   tipoLogin = 'completo';
+  select = true;
 
   constructor( private clienteService: ClientesService, private loginService: LoginService, private router: Router,
                private toastService: ToastService, private usuarioService: UsuariosService) { }
@@ -76,27 +77,48 @@ export class LoginPage implements OnInit {
     }
   }
 
+  changePersonal( id ) {
+    for (const personal of this.usuarios ) {
+      if ( personal.id === id ) {
+        this.usuario = personal;
+        this.email = personal.email;
+        this.clave = personal.clave;
+      }
+    }
+  }
+
   
+
+// login modificado para ingreso con supervisor o dueño
   onSubmitLogin(): void {
     if ( this.tipoLogin === 'completo' ) {
-      console.log(this.usuarios);
-      if ( this.cliente.aprobado ) {
+      if(this.select) {
+        if ( this.cliente.aprobado ) {
+          this.loginService.logIn(this.email, this.clave)
+          .then( respuesta => {
+            this.email = '';
+            this.clave = '';
+            this.router.navigate(['/cliente']);
+          });
+        }
+        else {
+          this.toastService.errorToast('Su registro todavía no fue aprobado');
+        }
+      }else{
         this.loginService.logIn(this.email, this.clave)
-        .then( respuesta => {
-          this.email = '';
-          this.clave = '';
-          this.router.navigate(['/cliente']);
-        });
-      }
-      else {
-        this.toastService.errorToast('Su registro todavía no fue aprobado');
+          .then( respuesta => {
+            this.email = '';
+            this.clave = '';
+            this.router.navigate(['/supervisor']);
+          });
+
       }
     }
     else {
       for (const cliente of this.clientesAnonimos ) {
         if ( cliente.nombre === this.alias ) {
           this.alias = '';
-          this.router.navigate(['/home']);
+          this.router.navigate(['/cliente']);
         }
       }
     }
