@@ -39,7 +39,7 @@ Se logro cumplir con los objetivos fijados
 
 ## Sábado 06/05 al 13/05 :computer:
 
-
+```
 Santiago Ortiz ->
   -pantalla dueño/supervisor
   -modificacion de login para entrar como dueño/supervisor
@@ -47,7 +47,8 @@ Santiago Ortiz ->
   -se crea pantalla para aprobar nuevos clientes
   
   -Cumplio con los objetivos y realizo tareas extra
-
+```
+```
 Sebastian Pasquini -> 
   Tareas realizadas en el login:
   - Ingreso según el tipo de cliente.
@@ -62,7 +63,8 @@ Sebastian Pasquini ->
   - Push notification para avisar registro de nuevo cliente
 
   - cumplio con los objetivos, y realizo mas tareas de las correspondientes en la iteracion
-  
+  ```
+  ```
 Alejandro Laborde Parodi -> 
   - Preparacion de qr mesas
   - Preparacion de qr propina
