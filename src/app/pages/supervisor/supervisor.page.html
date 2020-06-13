@@ -1,30 +1,20 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>supervisor</ion-title>
+  <ion-toolbar color="primary">
+    <ion-title>(nombre de dueño o supervisor)</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content> 
-<ion-list padding *ngFor="let cliente of clientes">
-  <ion-item *ngIf="!cliente.aprobado">
-    <p>{{cliente.nombre}} {{cliente.apellido}}</p>
+<ion-content padding color="dark"> 
+
+  <br>
+  <ion-list-header lines="inset" color="dark">
+    <ion-label>LISTADO DE CLIENTES</ion-label>
+  </ion-list-header>
+<div *ngFor="let cliente of clientes ">
+  <ion-item color="dark" *ngIf="!cliente.aprobado">
+    <ion-label >{{cliente.nombre}} {{cliente.apellido}}</ion-label>
+    <ion-button fill="outline" (click)="aprobarCliente(cliente)">APROBAR</ion-button>
   </ion-item>
-
-</ion-list>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
+</div>
 
 </ion-content>
