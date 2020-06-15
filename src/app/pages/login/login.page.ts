@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClientesService } from 'src/app/services/clientes.service';
 import { UsuariosService } from 'src/app/services/usuarios.service';
 import { Cliente } from 'src/app/models/cliente';
-import { tipoCliente, tipoPersonal } from 'src/app/models/tipos';
+import { tipoCliente, tipoPersonal, estadoCliente } from 'src/app/models/tipos';
 import { LoginService } from 'src/app/services/login.service';
 import { Router } from '@angular/router';
 import { ToastService } from 'src/app/services/toast.service';
@@ -96,9 +96,9 @@ export class LoginPage implements OnInit {
         if ( this.cliente.aprobado ) {
           this.loginService.logIn(this.email, this.clave)
           .then( respuesta => {
+            this.router.navigate(['/cliente',{cliente:this.email}]);
             this.email = '';
             this.clave = '';
-            this.router.navigate(['/cliente']);
           });
         }
         else {
@@ -117,8 +117,8 @@ export class LoginPage implements OnInit {
     else {
       for (const cliente of this.clientesAnonimos ) {
         if ( cliente.nombre === this.alias ) {
+          this.router.navigate(['/cliente',{cliente:cliente.nombre}]);
           this.alias = '';
-          this.router.navigate(['/cliente']);
         }
       }
     }

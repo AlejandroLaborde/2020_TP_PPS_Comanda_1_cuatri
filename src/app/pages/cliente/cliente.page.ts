@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuariosService } from 'src/app/services/usuarios.service';
 import { MesasService } from 'src/app/services/mesas.service';
-import { estadoMesa, estadoProducto, tipoMesa } from 'src/app/models/tipos';
+import { estadoMesa, estadoCliente, estadoPedido } from 'src/app/models/tipos';
 import { ProductoService } from 'src/app/services/producto.service';
 import { Producto } from 'src/app/models/producto';
-import { ModalController, NavParams, NavController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { MesaComponent } from 'src/app/components/mesa/mesa.component';
-import { Mesa } from 'src/app/models/mesa';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ClientesService } from 'src/app/services/clientes.service';
+import { ToastService } from 'src/app/services/toast.service';
+import { PedidoService } from 'src/app/services/pedido.service';
+import { Pedido } from 'src/app/models/pedido';
+import Swal from 'sweetalert2'
 
 
 @Component({
@@ -18,13 +21,43 @@ import { Router } from '@angular/router';
 export class ClientePage implements OnInit {
 
   productos:Producto[];
-  constructor( private usuarioService:UsuariosService,
+  clienteActual;
+  idClienteFirebase;
+  pedido:Pedido;
+  clienteParams
+  constructor( private clienteService:ClientesService,
                private mesaService: MesasService,
                private productoService: ProductoService,
                public modalController: ModalController,
                public router: Router,
+               private route: ActivatedRoute,
                public navControler: NavController,
-               public productosService: ProductoService ) { }
+               public productosService: ProductoService,
+               public toastService:ToastService,
+               public pedidosService: PedidoService ) {
+                
+      this.route.params.subscribe(params => {
+        this.clienteParams=params.cliente;
+        this.clienteService.obtenerClientePorEmail(params.cliente ).subscribe( respuesta=>{
+            if(respuesta){
+              this.idClienteFirebase = respuesta.id;
+              this.verificaPedidoExistente(respuesta.id);
+              this.clienteService.obtenerCLiente(respuesta.id).subscribe((resp:any) =>{
+                this.clienteActual = resp;
+              });
+            }else{
+              this.clienteService.obtenerClienteAnonimo( params.cliente ).subscribe(respuesta=>{
+                this.idClienteFirebase = respuesta.id;
+                this.verificaPedidoExistente(respuesta.id);
+                this.clienteService.obtenerCLiente(respuesta.id).subscribe((resp:any) =>{
+                  this.idClienteFirebase = resp.id;
+                  this.clienteActual = resp;
+                });
+            })
+          }
+        })
+      });
+  }
 
   ngOnInit() {
     this.productoService.getProductos().then( resp=>{ 
@@ -32,9 +65,48 @@ export class ClientePage implements OnInit {
       this.productos=resp});
   }
 
+  ponerEnEspera( dato ){
+    if(dato.text=='PonerEnEspera'){
+      this.clienteService.cambiarEstadoCliente(this.idClienteFirebase,estadoCliente.espera).subscribe();
+    }
+  }
+
+  verificaPedidoExistente(idCliente){
+    this.pedidosService.obtenerPedidoPorIDCliente(idCliente).subscribe(pedidoExistente=>{
+      this.pedido=pedidoExistente;
+    })
+  }
+  realizarPrdido(){
+    this.router.navigate(['/alta-pedido',{pedido:this.pedido.id,cliente:this.clienteParams}])
+  
+  }
+
+  asociarConMesa( mesaLeida ){
+    this.mesaService.obtenerMesa(mesaLeida.text).then( mesa =>{
+      if(mesa.estado == estadoMesa.ocupada){
+        this.toastService.errorToast('Esta mesa se encuentra ocupada');
+      }else{
+        this.mesaService.cambiarEstadoMesa(mesa.id.toString(),estadoMesa.ocupada).subscribe();
+        if(this.clienteActual.estado != estadoCliente.aceptado){
+          this.toastService.errorToast('Debes estar primero en lista de espera para poder acceder a la mesa');
+        }else{
+          this.clienteService.cambiarEstadoCliente(this.idClienteFirebase,estadoCliente.sentado).subscribe();
+          const pedido = new Pedido();
+          pedido.cliente= this.clienteActual;
+          pedido.cliente.id=this.idClienteFirebase; 
+          pedido.mesa=mesa;
+          pedido.estado=estadoPedido.inicial;
+          this.pedidosService.altaPedido(pedido).subscribe( (resp:any)=>{
+            this.pedido = pedido;
+            this.pedido.id=resp;
+           this.toastService.confirmationToast('Se asocio correctamente');
+          });
+        }
+      }
+    })
+  }
+
   respuestaLector( mesa:any ){
-    //-M8n2hrTjzmMuUD66HhC
-    //mesa.text
     this.mesaService.obtenerMesa(mesa.text).then( resp=>{
       if(resp.estado == estadoMesa.ocupada){
        this.modalEstadoMesa(resp).then();

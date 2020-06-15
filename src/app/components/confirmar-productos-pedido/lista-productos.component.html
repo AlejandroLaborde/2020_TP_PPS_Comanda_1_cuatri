@@ -1,0 +1,26 @@
+
+
+
+
+
+
+
+
+
+
+<ion-grid class="estilo-grid">
+    <ion-row style="background-color: lightslategray;" >
+      <ion-col style="text-align: center; margin:auto;">Producto</ion-col>
+      <ion-col style="text-align: center; margin:auto;">Precio</ion-col>
+      <ion-col style="text-align: center; margin:auto;">Tiempo Espera</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let producto of productos" class="ion-align-items-center ion-justify-content-center">
+      <ion-col style="text-align: center; margin:auto;">{{producto.nombre}}</ion-col>
+      <ion-col style="text-align: center; margin:auto;">${{producto.precio}}</ion-col>
+      <ion-col style="text-align: center; margin:auto;">{{producto.tiempoPreparacion}} minuto/s</ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col><ion-button expand="block" color="success" (click)="confirmar()">Confirmar Pedido </ion-button></ion-col>
+      <ion-col><ion-button expand="block" color="danger" (click)="confirmar()">Cancelar</ion-button></ion-col>
+    </ion-row>
+</ion-grid> 

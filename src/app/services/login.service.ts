@@ -29,7 +29,7 @@ export class LoginService {
       }else{
         return false;
       }
-    })
+    }) 
   }
 
   public logOut(){

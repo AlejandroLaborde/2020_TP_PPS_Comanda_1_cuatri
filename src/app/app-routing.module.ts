@@ -13,7 +13,14 @@ const routes: Routes = [
     path: 'cliente',
     loadChildren: () => import('./pages/cliente/cliente.module').then( m => m.ClientePageModule)
   },
+  {
+    path: 'alta-pedido',
+    loadChildren: () => import('./pages/alta-pedido/alta-pedido.module').then( m => m.AltaPedidoPageModule)
+  },
   {  path: '',    redirectTo: 'login',    pathMatch: 'full'  },
+
+
+
   
 
 

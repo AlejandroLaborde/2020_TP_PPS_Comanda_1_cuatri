@@ -15,7 +15,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
-import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 
 @NgModule({
@@ -42,7 +41,6 @@ import { IonicStorageModule } from '@ionic/storage';
     NavParams,
     NavController,
     BarcodeScanner,
-    OneSignal,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

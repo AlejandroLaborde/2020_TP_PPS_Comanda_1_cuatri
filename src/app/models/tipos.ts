@@ -7,7 +7,8 @@ export enum estadoProducto{
 }
 
 export enum estadoPedido{
-    pendiente= 'espera',
+    inicial= 'inicial',
+    espera= 'espera',
     preparandose= 'preparacion',
     listo= 'listo',
     servido= 'servido',
@@ -17,6 +18,7 @@ export enum estadoPedido{
 
 export enum estadoCliente{
     espera= 'espera',
+    aceptado= 'aceptado',
     sentado='comiendo',
     off='off'
     

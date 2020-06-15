@@ -1,18 +1,87 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>ACA NOMBRE CLIENTE</ion-title>
+    <ion-title *ngIf="clienteActual" >{{this.clienteActual.nombre}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding color="dark">
+  <div *ngIf="clienteActual">
+    <div *ngIf="clienteActual.estado=='off'">
+      <h1 style="text-align: center;">Scanear qr para ponerse en lista de espera</h1>
+      <div class="qr">
+        <img  style="width: 80%;justify-content: center;" src="../../../assets/qr.png" alt="">
+      </div>
+    </div>
 
-  <div class="qr">
-    <img  style="width: 80%;justify-content: center;" src="../../../assets/qr.png" alt="">
+    <div style="margin-top: 10%;" *ngIf="clienteActual.estado=='espera'">
+      <ion-col >
+        <ion-row style="justify-content: center;">
+          <div class="icon latido"></div>
+        </ion-row>
+        <ion-row>
+          <p class="spinnerInterceptor latido">Esperando...</p>
+        </ion-row>
+      </ion-col>
+    </div>
+
+    <div *ngIf="clienteActual.estado=='aceptado'">
+      <h1 style="text-align: center;">Asociar con la mesa a travez del codigo QR de la misma</h1>
+      <div class="qr">
+        <img  style="width: 80%;justify-content: center;" src="../../../assets/qr.png" alt="">
+      </div>
+    </div>
+    
+    <div *ngIf="clienteActual.estado=='comiendo'">
+      
+      <ion-grid fixed>
+        <ion-row *ngIf="pedido.productos">
+          <ion-col size="12">
+            <ion-button style="height: 250px;" fill="clear" class="botonFeo" expand="full" >
+              <p class="texto">Mi pedido</p>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="!pedido.productos">
+          <ion-col size="12">
+            <ion-button  style="height: 250px;" fill="clear" class="botonLindo" expand="full" (click)="realizarPrdido()">
+              <p class="texto">Realizar Pedido</p>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <ion-button style="height: 250px;" fill="clear" class="botonFeo" expand="full" routerLink="/lista/cosasFeas">
+              <p class="texto">Consulta Mozo</p>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+       
+      </ion-grid>
+      
+
+    </div>
+    
+    
   </div>
-  <p>{{lector | json}}</p> 
+
+
+
+
+
+  <div *ngIf="!clienteActual">
+    <div>
+      <h1>aca loading carga</h1>
+    </div>
+  </div>
+ 
 </ion-content>
-<ion-footer>
-  <ion-toolbar>
-    <app-lector-qr (click)="respuestaLector()" (enviarDatos)="respuestaLector($event)" ></app-lector-qr>
+<ion-footer *ngIf="clienteActual">
+  <ion-toolbar *ngIf="clienteActual.estado=='off'" >
+    <app-lector-qr (enviarDatos)="ponerEnEspera($event)" ></app-lector-qr>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="clienteActual.estado=='aceptado'" >
+    <app-lector-qr (enviarDatos)="asociarConMesa($event)" ></app-lector-qr>
   </ion-toolbar>
 </ion-footer>
+
+
