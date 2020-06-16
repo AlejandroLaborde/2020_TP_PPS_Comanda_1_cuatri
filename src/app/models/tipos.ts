@@ -35,7 +35,8 @@ export enum tipoPersonal{
     cocinero='cocinero',
     bartender='bartender',
     supervisor='supervisor',
-    dueño='dueño'
+    dueño='dueño',
+    metre='metre'
 }
 
 export enum tipoMesa{

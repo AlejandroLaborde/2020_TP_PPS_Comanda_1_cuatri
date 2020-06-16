@@ -107,11 +107,18 @@ export class LoginPage implements OnInit {
       }else{
         this.loginService.logIn(this.email, this.clave)
           .then( respuesta => {
+            this.loginService.usuarioActual()
+            .then( res => {
+              if ( res.email === 'metre@mail.com') {
+                this.router.navigate(['/metre']);
+              }
+              else {
+                this.router.navigate(['/supervisor']);
+              }
+            });
             this.email = '';
             this.clave = '';
-            this.router.navigate(['/supervisor']);
           });
-
       }
     }
     else {
