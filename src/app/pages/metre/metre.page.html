@@ -16,5 +16,10 @@
     <ion-button fill="outline" (click)="aceptarCliente(cliente)">INGRESAR</ion-button>
   </ion-item>
 </div>
+<div *ngIf="clientesEnEspera.length === 0">
+  <ion-item color="dark">
+    <ion-label >Sin clientes en espera</ion-label>
+  </ion-item>
+</div>
 
 </ion-content>
