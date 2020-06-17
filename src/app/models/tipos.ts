@@ -6,6 +6,13 @@ export enum estadoProducto{
     listo= 'listo',
 }
 
+export enum estadoConsulta{
+    
+    pendiente= 'pendiente',
+    contestada= 'contestada'
+    
+}
+
 export enum estadoPedido{
     inicial= 'inicial',
     espera= 'espera',

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MesasService } from 'src/app/services/mesas.service';
-import { estadoMesa, estadoCliente, estadoPedido } from 'src/app/models/tipos';
+import { estadoMesa, estadoCliente, estadoPedido, estadoConsulta } from 'src/app/models/tipos';
 import { ProductoService } from 'src/app/services/producto.service';
 import { Producto } from 'src/app/models/producto';
-import { ModalController, NavController } from '@ionic/angular';
+import { ModalController, NavController, PopoverController } from '@ionic/angular';
 import { MesaComponent } from 'src/app/components/mesa/mesa.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ClientesService } from 'src/app/services/clientes.service';
@@ -11,6 +11,9 @@ import { ToastService } from 'src/app/services/toast.service';
 import { PedidoService } from 'src/app/services/pedido.service';
 import { Pedido } from 'src/app/models/pedido';
 import Swal from 'sweetalert2'
+import { ConsultaMozoComponent } from 'src/app/components/consulta-mozo/consulta-mozo.component';
+import { ConsultasService } from 'src/app/services/consultas.service';
+import { Consulta } from 'src/app/models/consulta';
 
 
 @Component({
@@ -26,15 +29,16 @@ export class ClientePage implements OnInit {
   pedido:Pedido;
   clienteParams
   constructor( private clienteService:ClientesService,
+               private popoverCtrl: PopoverController,
                private mesaService: MesasService,
                private productoService: ProductoService,
-               public modalController: ModalController,
-               public router: Router,
+               private modalController: ModalController,
+               private consultaService: ConsultasService,
+               private router: Router,
                private route: ActivatedRoute,
-               public navControler: NavController,
-               public productosService: ProductoService,
-               public toastService:ToastService,
-               public pedidosService: PedidoService ) {
+               private productosService: ProductoService,
+               private toastService:ToastService,
+               private pedidosService: PedidoService ) {
                 
       this.route.params.subscribe(params => {
         this.clienteParams=params.cliente;
@@ -95,6 +99,7 @@ export class ClientePage implements OnInit {
           pedido.cliente= this.clienteActual;
           pedido.cliente.id=this.idClienteFirebase; 
           pedido.mesa=mesa;
+          pedido.mesa.estado=estadoMesa.ocupada;
           pedido.estado=estadoPedido.inicial;
           this.pedidosService.altaPedido(pedido).subscribe( (resp:any)=>{
             this.pedido = pedido;
@@ -116,7 +121,29 @@ export class ClientePage implements OnInit {
     })
   }
 
-
+  async modalConsultaMozo( ) {
+    const popover = await this.popoverCtrl.create({
+      component: ConsultaMozoComponent,
+      componentProps:{productos:this.pedido},
+      translucent: true
+    });
+    popover.present();  
+    return popover.onDidDismiss().then(
+      (data: any) => {
+        if(data.data){
+          if(data.data){
+            const consulta = new Consulta(this.pedido.mesa,data.data,estadoConsulta.pendiente);
+            this.consultaService.altaConsulta( consulta ).subscribe( resp=>{
+              this.toastService.confirmationToast('Se envio tu consulta a los mozos');
+            }) 
+          }else{
+            this.toastService.errorToast('Consulta cancelada...');
+          }
+        }else{
+          this.toastService.errorToast('Consulta cancelada...');
+        }
+      })
+  }
 
   async modalEstadoMesa( mesa, comenzal?:any ) {
     console.log(mesa);

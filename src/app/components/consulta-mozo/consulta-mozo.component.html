@@ -1,0 +1,17 @@
+
+
+
+
+
+<ion-item>
+  <ion-col>
+    <ion-row>
+      <ion-textarea placeholder="Ingrese su consulta aquí..." [(ngModel)]="this.consulta" ></ion-textarea>
+    </ion-row>
+    <ion-row style="display: flex;justify-content: flex-end;">
+      
+      <ion-button expand="block" color="danger" (click)="cancelar()" > <ion-icon name="close-outline"></ion-icon></ion-button>
+      <ion-button expand="block" color="primary" (click)="enviar()" ><ion-icon name="send-outline"></ion-icon></ion-button>
+    </ion-row>
+  </ion-col>
+</ion-item>

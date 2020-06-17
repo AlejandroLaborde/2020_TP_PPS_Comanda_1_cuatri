@@ -36,7 +36,7 @@
       <ion-grid fixed>
         <ion-row *ngIf="pedido.productos">
           <ion-col size="12">
-            <ion-button style="height: 250px;" fill="clear" class="botonFeo" expand="full" >
+            <ion-button style="height: 250px;" fill="clear" class="miPedido" expand="full" >
               <p class="texto">Mi pedido</p>
             </ion-button>
           </ion-col>
@@ -50,7 +50,7 @@
         </ion-row>
         <ion-row>
           <ion-col size="12">
-            <ion-button style="height: 250px;" fill="clear" class="botonFeo" expand="full" routerLink="/lista/cosasFeas">
+            <ion-button style="height: 250px;" fill="clear" class="botonFeo" expand="full" (click)="modalConsultaMozo()">
               <p class="texto">Consulta Mozo</p>
             </ion-button>
           </ion-col>

@@ -5,22 +5,27 @@ import { LectorQRComponent } from './lector-qr/lector-qr.component';
 import { LectorDniComponent } from './lector-dni/lector-dni.component';
 import { ListaProductosComponent } from './confirmar-productos-pedido/lista-productos.component';
 import { IonicModule } from '@ionic/angular';
+import { ConsultaMozoComponent } from './consulta-mozo/consulta-mozo.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
     LectorQRComponent,
     LectorDniComponent,
-    ListaProductosComponent
+    ListaProductosComponent,
+    ConsultaMozoComponent
   ],
   exports:[
     LectorQRComponent,
     LectorDniComponent,
-    ListaProductosComponent
+    ListaProductosComponent,
+    ConsultaMozoComponent
   ],
   imports: [
     IonicModule.forRoot(),
-    CommonModule
+    CommonModule,
+    FormsModule
   ]
 })
 export class ComponentsModule { }
