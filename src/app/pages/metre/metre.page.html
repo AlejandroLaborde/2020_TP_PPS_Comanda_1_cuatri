@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>METRE</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding color="dark"> 
+
+  <br>
+  <ion-list-header lines="inset" color="dark">
+    <ion-label>LISTA DE ESPERA</ion-label>
+  </ion-list-header>
+<div *ngFor="let cliente of clientesEnEspera ">
+  <ion-item color="dark">
+    <ion-label >{{cliente.nombre}} {{cliente.apellido}}</ion-label>
+    <ion-button fill="outline" (click)="aceptarCliente(cliente)">INGRESAR</ion-button>
+  </ion-item>
+</div>
+<div *ngIf="clientesEnEspera.length === 0">
+  <ion-item color="dark">
+    <ion-label >Sin clientes en espera</ion-label>
+  </ion-item>
+</div>
+
+</ion-content>

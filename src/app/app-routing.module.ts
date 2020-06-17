@@ -17,7 +17,11 @@ const routes: Routes = [
     path: 'alta-pedido',
     loadChildren: () => import('./pages/alta-pedido/alta-pedido.module').then( m => m.AltaPedidoPageModule)
   },
-  {  path: '',    redirectTo: 'login',    pathMatch: 'full'  },
+  {  path: '',    redirectTo: 'login',    pathMatch: 'full'  },  {
+    path: 'metre',
+    loadChildren: () => import('./pages/metre/metre.module').then( m => m.MetrePageModule)
+  },
+
 
 
 
