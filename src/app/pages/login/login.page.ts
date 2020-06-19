@@ -112,6 +112,9 @@ export class LoginPage implements OnInit {
               if ( res.email === 'metre@mail.com') {
                 this.router.navigate(['/metre']);
               }
+              else if ( res.email === 'mozo@mozo.com') {
+                this.router.navigate(['/mozo']);
+              }
               else {
                 this.router.navigate(['/supervisor']);
               }

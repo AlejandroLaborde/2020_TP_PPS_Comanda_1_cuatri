@@ -21,7 +21,11 @@ const routes: Routes = [
   {
     path: 'metre',
     loadChildren: () => import('./pages/metre/metre.module').then( m => m.MetrePageModule)
-  }, 
+  },   {
+    path: 'mozo',
+    loadChildren: () => import('./pages/mozo/mozo.module').then( m => m.MozoPageModule)
+  },
+
 
 
 
