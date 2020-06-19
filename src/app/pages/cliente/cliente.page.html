@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div style="margin-top: 10%;" *ngIf="clienteActual.estado=='espera'">
+    <div style="margin-top: 40%;" *ngIf="clienteActual.estado=='espera'">
       <ion-col >
         <ion-row style="justify-content: center;">
           <div class="icon latido"></div>
@@ -25,7 +25,7 @@
     </div>
 
     <div *ngIf="clienteActual.estado=='aceptado'">
-      <h1 style="text-align: center;">Asociar con la mesa a travez del codigo QR de la misma</h1>
+      <h1 style="text-align: center;">Asociar con la mesa a través del codigo QR de la misma</h1>
       <div class="qr">
         <img  style="width: 80%;justify-content: center;" src="../../../assets/qr.png" alt="">
       </div>

@@ -24,7 +24,7 @@ export class LoginPage implements OnInit {
   clave;
   alias;
   tipoLogin = 'completo';
-  select = true;
+  esCliente = true;
 
   constructor( private clienteService: ClientesService, private loginService: LoginService, private router: Router,
                private toastService: ToastService, private usuarioService: UsuariosService) { }
@@ -87,12 +87,10 @@ export class LoginPage implements OnInit {
     }
   }
 
-  
-
-// login modificado para ingreso con supervisor o dueño
+  // login modificado para ingreso con supervisor o dueño
   onSubmitLogin(): void {
-    if ( this.tipoLogin === 'completo' ) {
-      if(this.select) {
+    if ( this.esCliente ) {
+      if ( this.tipoLogin === 'completo' ) {
         if ( this.cliente.aprobado ) {
           this.loginService.logIn(this.email, this.clave)
           .then( respuesta => {
@@ -104,33 +102,45 @@ export class LoginPage implements OnInit {
         else {
           this.toastService.errorToast('Su registro todavía no fue aprobado');
         }
-      }else{
-        this.loginService.logIn(this.email, this.clave)
-          .then( respuesta => {
-            this.loginService.usuarioActual()
-            .then( res => {
-              if ( res.email === 'metre@mail.com') {
-                this.router.navigate(['/metre']);
-              }
-              else if ( res.email === 'mozo@mozo.com') {
-                this.router.navigate(['/mozo']);
-              }
-              else {
-                this.router.navigate(['/supervisor']);
-              }
-            });
-            this.email = '';
-            this.clave = '';
-          });
+      }
+      else {
+        let aliasInexistente = true;
+        for (const cliente of this.clientesAnonimos ) {
+          if ( cliente.nombre === this.alias ) {
+            aliasInexistente = false;
+            if( cliente.aprobado === true ) {
+              this.router.navigate(['/cliente',{cliente:cliente.nombre}]);
+              this.alias = '';
+            }
+            else {
+              this.toastService.errorToast('Su registro todavía no fue aprobado');
+              break;
+            }
+          }
+        }
+        if (aliasInexistente ) {
+          this.toastService.errorToast('Alias inexistente');
+        }
       }
     }
     else {
-      for (const cliente of this.clientesAnonimos ) {
-        if ( cliente.nombre === this.alias ) {
-          this.router.navigate(['/cliente',{cliente:cliente.nombre}]);
-          this.alias = '';
-        }
-      }
+      this.loginService.logIn(this.email, this.clave)
+      .then( respuesta => {
+        this.loginService.usuarioActual()
+        .then( res => {
+          if ( res.email === 'metre@mail.com') {
+            this.router.navigate(['/metre']);
+          }
+          else if ( res.email === 'mozo@mozo.com') {
+            this.router.navigate(['/mozo']);
+          }
+          else {
+            this.router.navigate(['/supervisor']);
+          }
+        });
+        this.email = '';
+        this.clave = '';
+      });
     }
   }
 }
