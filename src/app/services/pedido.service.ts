@@ -24,7 +24,7 @@ export class PedidoService {
   }
 
   altaProductos( idPedido:string, productos:Producto[] ){
-    return this.httpClient.patch(`${environment.hostFirebase}/pedidos/${idPedido}.json`,{estado:estadoPedido.espera,productos:productos});
+    return this.httpClient.patch(`${environment.hostFirebase}/pedidos/${idPedido}.json`,{estado:estadoPedido.inicial,productos:productos});
   }
 
   obtenerPedidos(){

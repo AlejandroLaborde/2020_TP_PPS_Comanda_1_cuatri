@@ -16,9 +16,10 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { IonicStorageModule } from '@ionic/storage';
+import { EstadoPipe } from './pipes/estado.pipe';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, EstadoPipe],
   entryComponents: [
   ],
   imports: [

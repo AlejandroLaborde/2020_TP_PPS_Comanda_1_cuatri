@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MesasService } from 'src/app/services/mesas.service';
 import { estadoMesa, estadoCliente, estadoPedido, estadoConsulta } from 'src/app/models/tipos';
-import { ProductoService } from 'src/app/services/producto.service';
-import { Producto } from 'src/app/models/producto';
 import { ModalController, NavController, PopoverController } from '@ionic/angular';
 import { MesaComponent } from 'src/app/components/mesa/mesa.component';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -27,7 +25,6 @@ import { Cliente } from 'src/app/models/cliente';
 })
 export class ClientePage implements OnInit {
 
-  productos:Producto[];
   clienteActual;
   idClienteFirebase;
   pedido:Pedido;
@@ -35,12 +32,10 @@ export class ClientePage implements OnInit {
   constructor( private clienteService:ClientesService,
                private popoverCtrl: PopoverController,
                private mesaService: MesasService,
-               private productoService: ProductoService,
                private modalController: ModalController,
                private consultaService: ConsultasService,
                private router: Router,
                private route: ActivatedRoute,
-               private productosService: ProductoService,
                private toastService:ToastService,
                private pedidosService: PedidoService,
                private scanner: BarcodeScanner ) {
@@ -70,17 +65,15 @@ export class ClientePage implements OnInit {
   }
 
   ngOnInit() {
-    this.productoService.getProductos().then( resp=>{ 
-      console.log(resp);
-      this.productos=resp});
-      // this.clienteService.obtenerClientes().snapshotChanges().forEach( clientesSnapshot => {
-      //   clientesSnapshot.forEach( snapshot => {
-      //     const cliente = snapshot.payload.toJSON() as Cliente;
-      //     if( cliente.nombre === this.clienteActual.nombre ) {
-      //         this.clienteActual = cliente;
-      //     }
-      //   });
-      // });
+    
+      this.clienteService.obtenerClientes().snapshotChanges().forEach( clientesSnapshot => {
+        clientesSnapshot.forEach( snapshot => {
+          const cliente = snapshot.payload.toJSON() as Cliente;
+          if( cliente.nombre === this.clienteActual.nombre ) {
+              this.clienteActual = cliente;
+          }
+        });
+      });
   }
 
   ponerEnEspera( dato ){
@@ -134,10 +127,10 @@ export class ClientePage implements OnInit {
       }
     })
   }
-
+ 
   miPedido(){
-  
-    this.scanner.scan().then(data => {
+
+    this.scanner.scan({prompt: "Scanee el codigo QR de su mesa"}).then(data => {
       if(data.text == this.pedido.mesa.id){
         this.router.navigate(['/mi-pedido',{id:this.pedido.id}]);
       }else{
@@ -146,7 +139,7 @@ export class ClientePage implements OnInit {
     }).catch(err => {
         console.log("Error: ", err);
         this.toastService.errorToast('Codigo QR inválido');
-      });
+    });
     
   }
 

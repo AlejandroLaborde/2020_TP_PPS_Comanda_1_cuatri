@@ -1,0 +1,44 @@
+<ion-card class="backgroundCard" padding >
+  <ion-item class="pedidos-title">
+    <ion-title>{{producto.nombre}}</ion-title>
+  </ion-item>
+  <ion-slides pager="true" effect="coverflow" zoom="true">
+
+    <ion-slide *ngIf="producto.foto1 !== ''">
+      <div class="swiper-zoom-container">
+        <img class="imagen" [src]="producto.foto1">
+      </div>
+    </ion-slide>
+    <ion-slide *ngIf="producto.foto2 !== ''">
+      <div class="swiper-zoom-container">
+        <img class="imagen" [src]="producto.foto2">
+      </div>
+    </ion-slide>
+    <ion-slide *ngIf="producto.foto3 !== ''">
+      <div class="swiper-zoom-container">
+        <img class="imagen" [src]="producto.foto3">
+      </div>
+    </ion-slide>
+  </ion-slides>
+  <br>
+  <!-- <ion-row class="pedidos-data">
+    <ion-col>
+      <ion-button expand="block" color="success" (click)="agregar(producto)"><ion-icon name="add"></ion-icon></ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button expand="block" color="danger" (click)="restar(producto)"><ion-icon name="remove"></ion-icon></ion-button>
+    </ion-col>
+  </ion-row> -->
+  <ion-row class="pedidos-data" >
+    <p style="color: black; font-size: 15px; margin: auto; padding: 5%;">{{producto.descripcion}}</p>
+  </ion-row>
+  <ion-row class="pedidos-data" >
+    <ion-col>
+      <p style="color: black; font-size: 15px; margin: auto; padding: 5%;"><b>Precio:</b> ${{producto.precio}}</p>
+    </ion-col>
+    <ion-col>
+      <p style="color: black; font-size: 15px; margin: auto; padding: 5%;"><b>Tiempo:</b> {{producto.tiempoPreparacion}}
+        minuto/s</p>
+    </ion-col>
+  </ion-row>
+</ion-card>

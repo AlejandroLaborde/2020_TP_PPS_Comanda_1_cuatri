@@ -7,6 +7,7 @@ import { ListaProductosComponent } from './confirmar-productos-pedido/lista-prod
 import { IonicModule } from '@ionic/angular';
 import { ConsultaMozoComponent } from './consulta-mozo/consulta-mozo.component';
 import { FormsModule } from '@angular/forms';
+import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
 
 
 @NgModule({
@@ -14,13 +15,15 @@ import { FormsModule } from '@angular/forms';
     LectorQRComponent,
     LectorDniComponent,
     ListaProductosComponent,
-    ConsultaMozoComponent
+    ConsultaMozoComponent,
+    DetalleProductoComponent
   ],
   exports:[
     LectorQRComponent,
     LectorDniComponent,
     ListaProductosComponent,
-    ConsultaMozoComponent
+    ConsultaMozoComponent,
+    DetalleProductoComponent
   ],
   imports: [
     IonicModule.forRoot(),

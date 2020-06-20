@@ -6,9 +6,30 @@
 
 <ion-content>
 
+  <ion-list *ngIf="this.pedido">
+    <ion-list-header>
+      <h3>Estado Pedido: {{this.pedido.estado}} </h3>
+       
+    </ion-list-header>
 
+    <ion-item *ngFor="let producto of this.pedido.productos" (click)="mostrarDetalle(producto)">
+      <ion-avatar slot="start">
+        <img [src]="producto.foto1">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{producto.nombre}}</h2>
+        <h3>{{producto.estado}}</h3>
+        <p>{{producto.descripcion}}</p>
+      </ion-label>
+    </ion-item>
 
-  <ion-button>Juegos</ion-button>
-  <ion-button>Realizar Encuesta</ion-button>
-  <ion-button>Ver Estado</ion-button>
-</ion-content>
+     </ion-list>
+
+     
+    </ion-content>
+    
+  <ion-footer *ngIf="this.pedido">
+    <ion-toolbar >
+        <ion-button expand="block" *ngIf="this.pedido.estado=='servido'" color="success" > <ion-icon name="card-outline"> </ion-icon> Pedir Cuenta <ion-icon name="cash-outline"> </ion-icon></ion-button>
+  </ion-toolbar>
+</ion-footer>

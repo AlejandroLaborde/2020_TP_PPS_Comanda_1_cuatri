@@ -33,15 +33,15 @@
     
     <div *ngIf="clienteActual.estado=='comiendo'">
       
-      <ion-grid fixed>
-        <ion-row *ngIf="pedido.productos">
+      <ion-grid fixed *ngIf="this.pedido">
+        <ion-row *ngIf="this.pedido.productos">
           <ion-col size="12">
             <ion-button style="height: 250px;" fill="clear" (click)="miPedido()"  class="miPedido" expand="full" >
               <p class="texto">Mi pedido</p>
             </ion-button>
           </ion-col>
         </ion-row>
-        <ion-row *ngIf="!pedido.productos">
+        <ion-row *ngIf="!this.pedido.productos">
           <ion-col size="12">
             <ion-button  style="height: 250px;" fill="clear" class="botonLindo" expand="full" (click)="realizarPrdido()">
               <p class="texto">Realizar Pedido</p>

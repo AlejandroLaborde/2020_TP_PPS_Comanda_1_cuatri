@@ -25,7 +25,6 @@ const routes: Routes = [
     path: 'mi-pedido',
     loadChildren: () => import('./pages/mi-pedido/mi-pedido.module').then( m => m.MiPedidoPageModule)
   },
-     
   {
     path: 'mozo',
     loadChildren: () => import('./pages/mozo/mozo.module').then( m => m.MozoPageModule)

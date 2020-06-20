@@ -5,8 +5,7 @@ import { ClientePage } from './cliente.page';
 import { MiPedidoPage } from '../mi-pedido/mi-pedido.page';
 
 const routes: Routes = [
-  { path: '', component: ClientePage },
-  
+  { path: '', component: ClientePage }
 ];
 
 @NgModule({
