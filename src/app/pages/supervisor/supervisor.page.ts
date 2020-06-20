@@ -4,6 +4,7 @@ import { Cliente } from 'src/app/models/cliente';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { ToastService } from 'src/app/services/toast.service';
+import { MailService } from 'src/app/services/mail.service';
 
 @Component({
   selector: 'app-supervisor',
@@ -14,7 +15,8 @@ export class SupervisorPage implements OnInit {
 
   clientes = []
 
-  constructor( private clienteService: ClientesService, private httpClient:HttpClient, private toast: ToastService) { }
+  constructor( private clienteService: ClientesService, private httpClient:HttpClient,
+     private toast: ToastService, private mailService: MailService) { }
 
   ngOnInit() {
     this.clienteService.obtenerClientes().snapshotChanges().forEach( clientesSnapshot => {
@@ -35,13 +37,7 @@ export class SupervisorPage implements OnInit {
       res=>{
         // envio de correo automatico.
         this.clientes = [];
-        this.httpClient.post(`https://us-central1-lacomanda-pps.cloudfunctions.net/mailer/`, {
-          to: "alee_2695@live.com.ar",
-          message: "Bienvenido " + cliente.nombre + " " + cliente.apellido,
-          subject: "Su registro ha sido aprobado." 
-          }).subscribe(res=>{
-            this.toast.confirmationToast('Cliente aprobado. Correo enviado.');
-          });
+        this.mailService.correoAprobacion(cliente);
         
       });
     

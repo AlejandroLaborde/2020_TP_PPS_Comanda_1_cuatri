@@ -27,6 +27,9 @@ export class PedidoService {
     return this.httpClient.patch(`${environment.hostFirebase}/pedidos/${idPedido}.json`,{estado:estadoPedido.espera,productos:productos});
   }
 
+  obtenerPedidos(){
+    return this.firebase.list(`pedidos`);
+  }
 
   obtenerPedido( idPedido ){
     return this.firebase.object(`pedidos/${idPedido}`).valueChanges();
