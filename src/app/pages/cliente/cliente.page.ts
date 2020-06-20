@@ -14,7 +14,10 @@ import Swal from 'sweetalert2'
 import { ConsultaMozoComponent } from 'src/app/components/consulta-mozo/consulta-mozo.component';
 import { ConsultasService } from 'src/app/services/consultas.service';
 import { Consulta } from 'src/app/models/consulta';
+
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+
+import { Cliente } from 'src/app/models/cliente';
 
 
 @Component({
@@ -54,11 +57,12 @@ export class ClientePage implements OnInit {
             }else{
               this.clienteService.obtenerClienteAnonimo( params.cliente ).subscribe(respuesta=>{
                 this.idClienteFirebase = respuesta.id;
+                this.clienteActual = respuesta;
                 this.verificaPedidoExistente(respuesta.id);
-                this.clienteService.obtenerCLiente(respuesta.id).subscribe((resp:any) =>{
-                  this.idClienteFirebase = resp.id;
-                  this.clienteActual = resp;
-                });
+                // this.clienteService.obtenerCLiente(respuesta.id).subscribe((resp:any) =>{
+                //   this.idClienteFirebase = resp.id;
+                //   this.clienteActual = resp;
+                // });
             })
           }
         })
@@ -69,6 +73,14 @@ export class ClientePage implements OnInit {
     this.productoService.getProductos().then( resp=>{ 
       console.log(resp);
       this.productos=resp});
+      this.clienteService.obtenerClientes().snapshotChanges().forEach( clientesSnapshot => {
+        clientesSnapshot.forEach( snapshot => {
+          const cliente = snapshot.payload.toJSON() as Cliente;
+          if( cliente.nombre === this.clienteActual.nombre ) {
+              this.clienteActual = cliente;
+          }
+        });
+      });
   }
 
   ponerEnEspera( dato ){

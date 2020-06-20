@@ -2,10 +2,10 @@ import { Mesa } from './mesa';
 import { estadoConsulta } from './tipos';
 
 export class Consulta{
-    private id:string;
-    private mesa:Mesa;
-    private consulta:string;
-    private estado:estadoConsulta;
+    public id:string;
+    public mesa:Mesa;
+    public consulta:string;
+    public estado:estadoConsulta;
 
     constructor (mesa:Mesa , consulta:string , estado:estadoConsulta, id?:string){
         this.mesa = mesa;

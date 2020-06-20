@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>MOZO</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding color="dark"> 
+
+  <br>
+  <ion-list-header lines="inset" color="dark">
+    <ion-label>CONSULTAS DE CLIENTES</ion-label>
+  </ion-list-header>
+  <div *ngIf="consultas.length !== 0">
+    <ion-card *ngFor="let consulta of consultas" style="background-color: #222428;">
+      <ion-card-header>
+        <ion-card-title style="color: white;"> {{consulta.mesa.nombrePublico}} </ion-card-title>
+      </ion-card-header>
+      <ion-card-content style="font-size: 20px;">
+        <div style="margin-bottom: 10px;">
+          <ion-label>{{consulta.consulta}}</ion-label>
+        </div>
+        <div>  
+          <ion-button fill="outline" (click)="responderConsulta(consulta)"> RESPONDIDA </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div *ngIf="consultas.length === 0">
+    <ion-item color="dark">
+      <ion-label >Sin consultas</ion-label>
+    </ion-item>
+  </div>
+
+</ion-content>

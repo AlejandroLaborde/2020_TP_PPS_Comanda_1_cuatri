@@ -8,7 +8,18 @@
   <div style="text-align: center;">
     <img src="../../../assets/logo.png" alt="" class="imagen-login">
   </div>
-  <ion-radio-group value="completo" (ionChange)="cambiarTipoDeLogin($event)">
+  <section  color="primary" >
+    <ion-segment  scrollable mode="md" color="primary" value = "ion-sb-0">
+      <ion-segment-button mode="md" (click)="esCliente = true">
+        <ion-label text-capitalize>clientes</ion-label>
+      </ion-segment-button>
+
+      <ion-segment-button mode="md" (click)="esCliente = false">
+        <ion-label text-capitalize>personal</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </section>
+  <ion-radio-group *ngIf="esCliente" value="completo" (ionChange)="cambiarTipoDeLogin($event)">
     <ion-list-header color = "dark">
       <ion-label>Tipo de login</ion-label>
     </ion-list-header>  
@@ -21,7 +32,7 @@
       <ion-radio slot="start" value="anonimo"></ion-radio>
     </ion-item>
   </ion-radio-group>
-  <div style="margin-top: 20px;" *ngIf="tipoLogin === 'completo'">
+  <div style="margin-top: 20px;" *ngIf="(tipoLogin === 'completo' && esCliente) || !esCliente">
     <ion-item color="dark">
       <ion-label position="floating">Correo electrónico</ion-label> 
       <ion-input type="text" [(ngModel)]="email" name="email"></ion-input>
@@ -31,32 +42,21 @@
       <ion-input type="password" [(ngModel)]="clave" name="clave"></ion-input>
     </ion-item>
   </div>
-  <div style="height: 132px;" *ngIf="tipoLogin === 'anonimo'">
+  <div style="height: 132px;" *ngIf="tipoLogin === 'anonimo' && esCliente">
     <ion-item color="dark">
       <ion-label position="floating">Alias</ion-label> 
       <ion-input type="text" [(ngModel)]="alias" name="alias"></ion-input>
     </ion-item> 
   </div>
-  <section  color="primary" *ngIf="tipoLogin === 'completo'">
-    <ion-segment  scrollable mode="md" color="primary">
-      <ion-segment-button mode="md" (click)="select = true">
-        <ion-label text-capitalize>clientes</ion-label>
-      </ion-segment-button>
-
-      <ion-segment-button mode="md" (click)="select = false">
-        <ion-label text-capitalize>personal</ion-label>
-      </ion-segment-button>
-    </ion-segment>
-  </section>
 
   <div color="dark" *ngIf="tipoLogin === 'completo'">
-    <ion-item color="dark" *ngIf="select">
+    <ion-item color="dark" *ngIf="esCliente">
       <ion-label position="stacked">Usuario</ion-label>
       <ion-select (ionChange)="changeClienteRegistrado($event.target.value)" placeholder="Seleccione uno: ">
         <ion-select-option *ngFor="let cliente of clientes" value={{cliente.id}}> {{ cliente.nombre}} {{cliente.apellido}}</ion-select-option>
       </ion-select>
     </ion-item>
-    <ion-item color="dark" *ngIf="!select">
+    <ion-item color="dark" *ngIf="!esCliente">
       <ion-label position="stacked">Usuario</ion-label>
       <ion-select (ionChange)="changePersonal($event.target.value)" placeholder="Seleccione uno: ">
         <ion-select-option *ngFor="let usuario of usuarios" value={{usuario.id}}> {{ usuario.nombre}} {{usuario.apellido}}</ion-select-option>
