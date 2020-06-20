@@ -80,7 +80,9 @@ Alejandro Laborde Parodi ->
 
 ```
 Santiago Ortiz ->
-  
+  -Correccion detalles detalles del supervisor y envío de mail en un servicio 
+  -Cambios en el login para entrar con todos los tipos de empleados 
+  -Creacion de pantallas de cocinero y bartender, ambos muestran en listado de pedido en espera. Falta completar su funcionalidad
 ```
 ```
 Sebastian Pasquini -> 
