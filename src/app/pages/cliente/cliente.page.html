@@ -36,7 +36,7 @@
       <ion-grid fixed>
         <ion-row *ngIf="pedido.productos">
           <ion-col size="12">
-            <ion-button style="height: 250px;" fill="clear" class="miPedido" expand="full" >
+            <ion-button style="height: 250px;" fill="clear" (click)="miPedido()"  class="miPedido" expand="full" >
               <p class="texto">Mi pedido</p>
             </ion-button>
           </ion-col>

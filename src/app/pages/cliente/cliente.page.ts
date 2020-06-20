@@ -14,6 +14,7 @@ import Swal from 'sweetalert2'
 import { ConsultaMozoComponent } from 'src/app/components/consulta-mozo/consulta-mozo.component';
 import { ConsultasService } from 'src/app/services/consultas.service';
 import { Consulta } from 'src/app/models/consulta';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 
 
 @Component({
@@ -38,7 +39,8 @@ export class ClientePage implements OnInit {
                private route: ActivatedRoute,
                private productosService: ProductoService,
                private toastService:ToastService,
-               private pedidosService: PedidoService ) {
+               private pedidosService: PedidoService,
+               private scanner: BarcodeScanner ) {
                 
       this.route.params.subscribe(params => {
         this.clienteParams=params.cliente;
@@ -119,6 +121,21 @@ export class ClientePage implements OnInit {
         this.modalEstadoMesa(resp).then();      
       }
     })
+  }
+
+  miPedido(){
+  
+    this.scanner.scan().then(data => {
+      if(data.text == this.pedido.mesa.id){
+        this.router.navigate(['/mi-pedido',{id:this.pedido.id}]);
+      }else{
+        this.toastService.errorToast('El codigo no corresponde a su mesa asignada');
+      }
+    }).catch(err => {
+        console.log("Error: ", err);
+        this.toastService.errorToast('Codigo QR inválido');
+      });
+    
   }
 
   async modalConsultaMozo( ) {

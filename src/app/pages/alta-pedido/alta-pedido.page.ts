@@ -54,6 +54,7 @@ export class AltaPedidoPage implements OnInit {
     this.productos.forEach(element => {
       if(element.id==data.text){
         this.agregar(element);
+        this.toastService.confirmationToast('Se agrego a tu pedido...');
       }
     });
   }
