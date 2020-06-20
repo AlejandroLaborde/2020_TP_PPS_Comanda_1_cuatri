@@ -125,6 +125,42 @@ export class LoginPage implements OnInit {
     }
     else {
       this.loginService.logIn(this.email, this.clave)
+      .then(res => {
+        switch (this.usuario.tipo) {
+          case tipoPersonal.supervisor:
+            this.router.navigate(['/supervisor']);
+            break;
+          case tipoPersonal.dueño:
+            this.router.navigate(['/supervisor']);
+            break;
+          case tipoPersonal.metre:
+            this.router.navigate(['/metre']);
+            break;
+          case tipoPersonal.mozo:
+            this.router.navigate(['/mozo']);
+            break;
+          case tipoPersonal.cocinero:
+            this.router.navigate(['/cocinero']);
+            break;
+          case tipoPersonal.bartender:
+              this.router.navigate(['/bartender']);
+              break;
+        
+          default:
+            break;
+        }
+
+        this.email = '';
+        this.clave = '';
+      });
+      
+    }
+  }
+}
+
+/*
+
+this.loginService.logIn(this.email, this.clave)
       .then( respuesta => {
         this.loginService.usuarioActual()
         .then( res => {
@@ -135,12 +171,11 @@ export class LoginPage implements OnInit {
             this.router.navigate(['/mozo']);
           }
           else {
-            this.router.navigate(['/supervisor']);
+            
           }
         });
         this.email = '';
         this.clave = '';
       });
-    }
-  }
-}
+
+*/ 
