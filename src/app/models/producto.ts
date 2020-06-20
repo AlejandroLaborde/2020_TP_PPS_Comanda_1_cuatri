@@ -6,7 +6,7 @@ export class Producto{
     public id:string;
     public nombre:string;
     public descripcion:string;
-    public tiempoPreparacion:string;
+    public tiempoPreparacion:number;
     public estado:estadoProducto;
     public precio:number;
     public foto1:string;
@@ -14,7 +14,7 @@ export class Producto{
     public foto3:string;
 
 
-    constructor(nombre:string,descripcion:string,tiempoPreparacion:string,precio:number, estado:estadoProducto,foto1:string,foto2:string,foto3:string,id?:string){
+    constructor(nombre:string,descripcion:string,tiempoPreparacion:number,precio:number, estado:estadoProducto,foto1:string,foto2:string,foto3:string,id?:string){
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.tiempoPreparacion = tiempoPreparacion;

@@ -84,6 +84,12 @@ export class ClientePage implements OnInit {
 
   verificaPedidoExistente(idCliente){
     this.pedidosService.obtenerPedidoPorIDCliente(idCliente).subscribe(pedidoExistente=>{
+      if(pedidoExistente.estado==estadoPedido.servido){
+        Swal.fire({
+          icon:"success",
+          title:"Confirmacion de recepción pedido."
+        })
+      }
       this.pedido=pedidoExistente;
     })
   }

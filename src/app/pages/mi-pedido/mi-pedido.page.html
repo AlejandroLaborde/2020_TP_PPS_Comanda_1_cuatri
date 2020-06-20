@@ -8,9 +8,13 @@
 
   <ion-list *ngIf="this.pedido">
     <ion-list-header>
-      <h3>Estado Pedido: {{this.pedido.estado}} </h3>
-       
+      <ion-row>
+        <h3>Estado Pedido: {{this.pedido.estado}} </h3>
+      </ion-row><br>  
     </ion-list-header>
+    <ion-row>
+      <h5 style="margin-left: 20px;" *ngIf="this.pedido.estado!='servido'">Tiempo Máximo de espera: {{this.tiempoMaximo}} min </h5>       
+    </ion-row>
 
     <ion-item *ngFor="let producto of this.pedido.productos" (click)="mostrarDetalle(producto)">
       <ion-avatar slot="start">
@@ -28,8 +32,8 @@
      
     </ion-content>
     
-  <ion-footer *ngIf="this.pedido">
+<ion-footer *ngIf="this.pedido">
     <ion-toolbar >
         <ion-button expand="block" *ngIf="this.pedido.estado=='servido'" color="success" > <ion-icon name="card-outline"> </ion-icon> Pedir Cuenta <ion-icon name="cash-outline"> </ion-icon></ion-button>
-  </ion-toolbar>
+    </ion-toolbar>
 </ion-footer>
