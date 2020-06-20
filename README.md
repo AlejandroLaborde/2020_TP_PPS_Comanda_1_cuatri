@@ -76,3 +76,41 @@ Alejandro Laborde Parodi ->
   -Por el momento me queda pendiente como tarea el alta de un pedido, lo tome para esta iteracion y todavia no llegue a cumplirlo.
 ```
 
+## Sábado 13/05 al 20/05 :computer:
+
+```
+Santiago Ortiz ->
+  
+```
+```
+Sebastian Pasquini -> 
+ Pagina de metre:
+- Se visualiza una lista de los clientes que están en lista de espera.
+- El metre cambia el estado del cliente para permitirle escanear el qr de la mesa.
+- Se agrega una alerta personalizada para avisarle al metre cuando ingresa un nuevo cliente a la lista de espera.
+
+Página de mozo:
+- Se visualiza una lista de las consultas relizadas por los clientes-
+- El mozo cambia el estado de la consulta una vez que esta es respondida.
+- Se agrega alerta personalizada para avisarle al mozo cuando tiene una nueva consulta
+ ```
+ ```
+Alejandro Laborde Parodi -> 
+
+  Pagina de Loguin
+    -Leer el codigo qr de DNI para autocompletado de nombre y apellido.
+   
+  Pagina de Cliente
+    - Creacion de la pagina de cliente
+    - Lectura de QR para ponerse en lista de espera
+    - Pantalla que informa que esta en espera, hasta que el mozo le habilite para escanear mesa
+    - Escaneo de QR Mesa, verificacion de mesa ocupada y asociacion del cliente con la mesa
+    - Persistencia de datos, si se cierra la aplicacion, al volver a abrir, recupera el estado actual del cliente y su pedido
+    - Alta de pedido, permite al cliente realizar su pedido, visualizado el importe y confirmandolo
+    - Consulta al mozo, se permite realizar una consulta.
+    
+   Pagina Mi Pedido
+   - Se solicita la lectura del codigo QR, para verificar que la mesa es la misma asociada al cliente, desde aca se puede ver el estado,
+   acceder a encuestas y juegos
+```
+
