@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Bartender</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding color="dark"> 
+
+  <br>
+  <ion-list-header lines="inset" color="dark">
+    <ion-label>LISTADO DE PEDIDOS</ion-label>
+  </ion-list-header>
+<div *ngFor="let pedido of pedidos ">
+  <ion-item color="dark">
+    <ion-label>{{pedido.mesa.nombrePublico}} </ion-label>
+    <ion-button fill="outline" (click)="prepararBebidas(pedido)">Preparar</ion-button>
+  </ion-item>
+</div>
+
+</ion-content>
