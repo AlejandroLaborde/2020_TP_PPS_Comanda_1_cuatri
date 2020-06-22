@@ -5,30 +5,96 @@
 </ion-header>
 
 <ion-content padding color="dark"> 
+  <section class="ion-padding" color="primary">
 
-  <br>
-  <ion-list-header lines="inset" color="dark">
-    <ion-label>CONSULTAS DE CLIENTES</ion-label>
-  </ion-list-header>
-  <div *ngIf="consultas.length !== 0">
-    <ion-card *ngFor="let consulta of consultas" style="background-color: #222428;">
-      <ion-card-header>
-        <ion-card-title style="color: white;"> {{consulta.mesa.nombrePublico}} </ion-card-title>
-      </ion-card-header>
-      <ion-card-content style="font-size: 20px;">
-        <div style="margin-bottom: 10px;">
-          <ion-label>{{consulta.consulta}}</ion-label>
-        </div>
-        <div>  
-          <ion-button fill="outline" (click)="responderConsulta(consulta)"> RESPONDIDA </ion-button>
-        </div>
-      </ion-card-content>
-    </ion-card>
+    <ion-segment  scrollable 
+                  mode="md" 
+                  color="primary"
+                  value = "0"
+                  (ionChange)="cambioDeSeccion( $event )">
+
+      <ion-segment-button mode="md" 
+                          name = "seccionActual"                       
+                          *ngFor="let seccion of secciones"
+                          [value]="seccion.id">
+
+      <ion-label text-capitalize>{{ seccion.descripcion }}</ion-label>
+      </ion-segment-button>
+
+    </ion-segment>
+  </section>
+
+  <div *ngIf="pedidosAConfirmar">
+    <div *ngIf="pedidosPendientes.length !== 0">
+      <ion-card *ngFor="let pedido of pedidosPendientes" style="background-color: #222428;">
+        <ion-card-header>
+          <ion-card-title style="color: white;"> {{pedido.mesa.nombrePublico}} </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div *ngFor="let producto of pedido.productos | keyvalue">
+            <div style="margin-bottom: 10px;">
+              <ion-label>{{producto.value.nombre}}</ion-label>
+            </div>
+          </div>
+          <div>  
+            <ion-button fill="outline" (click)="confirmarPedido(pedido)"> CONFIRMAR </ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div *ngIf="pedidosPendientes.length === 0">
+      <ion-item color="dark">
+        <ion-label >Sin pedidos pendientes</ion-label>
+      </ion-item>
+    </div>
   </div>
-  <div *ngIf="consultas.length === 0">
-    <ion-item color="dark">
-      <ion-label >Sin consultas</ion-label>
-    </ion-item>
+
+  <div *ngIf="pedidosAEntregar">
+    <div *ngIf="pedidosListos.length !== 0">
+      <ion-card *ngFor="let pedido of pedidosListos" style="background-color: #222428;">
+        <ion-card-header>
+          <ion-card-title style="color: white;"> {{pedido.mesa.nombrePublico}} </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div *ngFor="let producto of pedido.productos | keyvalue" style="margin-bottom: 10px;">
+            <ion-label>{{producto.value.nombre}}</ion-label>
+          </div>
+          <div>  
+            <ion-button fill="outline" (click)="servirPedido(pedido)"> SERVIR PEDIDO </ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div *ngIf="pedidosPendientes.length === 0">
+      <ion-item color="dark">
+        <ion-label >Sin pedidos para entregar</ion-label>
+      </ion-item>
+    </div>
   </div>
+
+  <div *ngIf="consultasClientes">
+    <div *ngIf="consultas.length !== 0">
+      <ion-card *ngFor="let consulta of consultas" style="background-color: #222428;">
+        <ion-card-header>
+          <ion-card-title style="color: white;"> {{consulta.mesa.nombrePublico}} </ion-card-title>
+        </ion-card-header>
+        <ion-card-content style="font-size: 20px;">
+          <div style="margin-bottom: 10px;">
+            <ion-label>{{consulta.consulta}}</ion-label>
+          </div>
+          <div>  
+            <ion-button fill="outline" (click)="responderConsulta(consulta)"> RESPONDIDA </ion-button>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div *ngIf="consultas.length === 0">
+      <ion-item color="dark">
+        <ion-label >Sin consultas</ion-label>
+      </ion-item>
+    </div>
+  </div>
+
+
 
 </ion-content>
