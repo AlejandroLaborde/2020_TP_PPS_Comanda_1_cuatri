@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+    <ion-back-button slot="start" text="Cuenta"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+
+<ion-content padding color="dark">
+
+  <table *ngIf="this.pedido"  class="table table-dark table-striped">
+    <thead >
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Producto</th>
+        <th scope="col">precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr *ngFor="let producto of this.pedido.productos; let i=index" >
+        <td>{{i}}</td>
+        <td>{{producto.nombre}}</td>
+        <td>${{producto.precio}}</td>
+      </tr>
+      <tr color="success" >
+        <td></td>
+        <td>TOTAL</td>
+        <td>${{this.total}}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</ion-content>
+
+
+<ion-footer *ngIf="this.pedido">
+  <ion-toolbar >
+      <ion-button expand="block" (click)="pedirCuenta()" color="success" > <ion-icon name="card-outline"> </ion-icon> Confirmar ${{this.total}}<ion-icon name="cash-outline"> </ion-icon></ion-button>
+  </ion-toolbar>
+</ion-footer>

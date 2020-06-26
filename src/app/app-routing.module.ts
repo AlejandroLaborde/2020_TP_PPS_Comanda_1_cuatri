@@ -29,7 +29,15 @@ const routes: Routes = [
     path: 'mozo',
     loadChildren: () => import('./pages/mozo/mozo.module').then( m => m.MozoPageModule)
   }
-  ,{  path: '',    redirectTo: 'login',    pathMatch: 'full'  },
+  ,{  path: '',    redirectTo: 'login',    pathMatch: 'full'  },  {
+    path: 'opciones-cliente',
+    loadChildren: () => import('./pages/opciones-cliente/opciones-cliente.module').then( m => m.OpcionesClientePageModule)
+  },
+  {
+    path: 'cuenta-cliente',
+    loadChildren: () => import('./pages/cuenta-cliente/cuenta-cliente.module').then( m => m.CuentaClientePageModule)
+  },
+
 
 
 

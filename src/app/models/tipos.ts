@@ -19,6 +19,7 @@ export enum estadoPedido{
     preparandose= 'preparacion',
     listo= 'listo',
     servido= 'servido',
+    confirmadoCliente= 'confirmadoCliente',
     pendienteCobro= 'pendiente cobro',
     abonado= 'abonado'
 }

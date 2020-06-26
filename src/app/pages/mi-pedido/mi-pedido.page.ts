@@ -18,15 +18,17 @@ export class MiPedidoPage implements OnInit {
   tiempoMaximo:number=0;
   constructor( private route:ActivatedRoute,
                private pedidosService:PedidoService,
-               private popoverCtrl: PopoverController ) {
+               private popoverCtrl: PopoverController,
+               private router:Router ) {
   }
 
   ngOnInit() {
-    
     this.route.params.subscribe(params => {
+      console.log(params);
       this.tiempoMaximo = 0;
       this.pedidosService.obtenerPedido(params.id).subscribe( (resp:Pedido)=>{
         this.pedido=resp;
+        this.pedido.id= params.id;
         resp.productos.forEach( (prod:Producto)=>{
           if(prod.tiempoPreparacion>this.tiempoMaximo){
             this.tiempoMaximo = prod.tiempoPreparacion;
@@ -45,6 +47,10 @@ export class MiPedidoPage implements OnInit {
     });
     return popover.present();  
     
+  }
+
+  pedirCuenta(){
+    this.router.navigate(['/cuenta-cliente',{id:this.pedido.id}]);
   }
 
 }

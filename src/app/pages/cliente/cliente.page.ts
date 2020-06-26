@@ -87,7 +87,19 @@ export class ClientePage implements OnInit {
       if(pedidoExistente.estado==estadoPedido.servido){
         Swal.fire({
           icon:"success",
-          title:"Confirmacion de recepción pedido."
+          title:"Confirmacion de recepción pedido.",
+          cancelButtonColor:'red',
+          cancelButtonText: 'Aun no me llego',
+          confirmButtonText: 'Llego!',
+          showConfirmButton:true,
+          showCancelButton:true
+        }).then( resp =>{
+          if( resp.isConfirmed ){
+            this.pedidosService.cambiaEstadoPedido(pedidoExistente.id,estadoPedido.confirmadoCliente).subscribe();
+          }else{
+
+            // aca que hacemos cuando no le llega?
+          }
         })
       }
       this.pedido=pedidoExistente;
@@ -135,10 +147,11 @@ export class ClientePage implements OnInit {
   }
  
   miPedido(){
+    //this.router.navigate(['/opciones-cliente',{id:'-MAETl83079F-lg7LkX0'}]);
 
     this.scanner.scan({prompt: "Scanee el codigo QR de su mesa"}).then(data => {
       if(data.text == this.pedido.mesa.id){
-        this.router.navigate(['/mi-pedido',{id:this.pedido.id}]);
+        this.router.navigate(['/opciones-cliente',{id:this.pedido.id}]);
       }else{
         this.toastService.errorToast('El codigo no corresponde a su mesa asignada');
       }

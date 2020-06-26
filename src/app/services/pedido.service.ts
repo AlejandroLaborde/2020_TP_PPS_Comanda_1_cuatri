@@ -27,6 +27,10 @@ export class PedidoService {
     return this.httpClient.patch(`${environment.hostFirebase}/pedidos/${idPedido}.json`,{estado:estadoPedido.inicial,productos:productos});
   }
 
+  cambiaEstadoPedido( idPedido:string, estadoPedido: estadoPedido ){
+    return this.httpClient.patch(`${environment.hostFirebase}/pedidos/${idPedido}.json`,{estado:estadoPedido});
+  }
+
   obtenerPedidos(){
     return this.firebase.list(`pedidos`);
   }

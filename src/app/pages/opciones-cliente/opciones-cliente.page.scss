@@ -1,0 +1,36 @@
+.verEstado{
+    background-image: url('../../../assets/verEstado.jpg') !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.encuesta{
+    background-image: url('../../../assets/encuesta.jpg') !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.juegos{
+    background-image: url('../../../assets/juegos.jpg') !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.texto{
+    color: white;
+    text-align: center;
+    font: italic bold 25px Georgia, Serif;
+}
+.texto2{
+    color: black;
+    text-align: center;
+    font: italic bold 25px Georgia, Serif;
+    text-shadow: 2px 2px 8px black;
+}
+
+ion-toolbar{
+    --ion-background-color:#222428;
+  }
