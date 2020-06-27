@@ -20,6 +20,7 @@ export class SupervisorPage implements OnInit {
 
   ngOnInit() {
     this.clienteService.obtenerClientes().snapshotChanges().forEach( clientesSnapshot => {
+      this.clientes = [];
       clientesSnapshot.forEach( snapshot => {
         const cliente = snapshot.payload.toJSON() as Cliente;
         if(!cliente.aprobado){
