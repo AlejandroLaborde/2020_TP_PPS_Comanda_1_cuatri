@@ -125,7 +125,7 @@ export class ClientePage implements OnInit {
           pedido.cliente.id=this.idClienteFirebase; 
           pedido.mesa=mesa;
           pedido.mesa.estado=estadoMesa.ocupada;
-          pedido.estado=estadoPedido.inicial;
+          pedido.estado=estadoPedido.asociadoMesa;
           this.pedidosService.altaPedido(pedido).subscribe( (resp:any)=>{
             this.pedido = pedido;
             this.pedido.id=resp;
@@ -147,7 +147,7 @@ export class ClientePage implements OnInit {
   }
  
   miPedido(){
-    //this.router.navigate(['/opciones-cliente',{id:'-MAETl83079F-lg7LkX0'}]);
+    //this.router.navigate(['/opciones-cliente',{id:'-MAqUGAfv3F2qaEfO-D2'}]);
 
     this.scanner.scan({prompt: "Scanee el codigo QR de su mesa"}).then(data => {
       if(data.text == this.pedido.mesa.id){

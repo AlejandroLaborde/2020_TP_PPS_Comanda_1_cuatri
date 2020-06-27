@@ -4,12 +4,14 @@ export enum estadoProducto{
     pendiente= 'espera',
     preparandose= 'preparacion',
     listo= 'listo',
+    propina= 'propina',
 }
 
 export enum tipoProducto{
     
     comida= 'comida',
-    bebida= 'bebida'
+    bebida= 'bebida',
+    propina= 'propina'
 }
 
 export enum estadoConsulta{
@@ -20,6 +22,7 @@ export enum estadoConsulta{
 }
 
 export enum estadoPedido{
+    asociadoMesa= 'asociadoConMesa',
     inicial= 'inicial',
     espera= 'espera',
     preparandose= 'preparacion',

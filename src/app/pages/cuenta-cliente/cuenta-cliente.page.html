@@ -30,12 +30,14 @@
       </tr>
     </tbody>
   </table>
-
 </ion-content>
 
 
 <ion-footer *ngIf="this.pedido">
-  <ion-toolbar >
-      <ion-button expand="block" (click)="pedirCuenta()" color="success" > <ion-icon name="card-outline"> </ion-icon> Confirmar ${{this.total}}<ion-icon name="cash-outline"> </ion-icon></ion-button>
-  </ion-toolbar>
+    <ion-toolbar >
+      <ion-row style="justify-content: space-around;">
+        <ion-button *ngIf="this.verPropina" color="light" (click)="propina()" > Propina    <ion-icon name="qr-code-outline"></ion-icon></ion-button>
+        <ion-button expand="block" (click)="pedirCuenta()" color="success" > <ion-icon name="card-outline"> </ion-icon> Confirmar ${{this.total}}<ion-icon name="cash-outline"> </ion-icon></ion-button>
+      </ion-row>
+    </ion-toolbar>
 </ion-footer>

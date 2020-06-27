@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Pedido } from 'src/app/models/pedido';
 import { PedidoService } from 'src/app/services/pedido.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { estadoPedido } from 'src/app/models/tipos';
+import { estadoPedido, estadoProducto, tipoProducto } from 'src/app/models/tipos';
 import { ToastService } from 'src/app/services/toast.service';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { Producto } from 'src/app/models/producto';
 
 @Component({
   selector: 'app-cuenta-cliente',
@@ -14,11 +16,14 @@ export class CuentaClientePage implements OnInit {
 
   pedido:Pedido;
   total:number=0;
+  verPropina:boolean;
   constructor( private route:ActivatedRoute,
                private pedidosService:PedidoService,
                private router:Router,
-               private toast:ToastService) {
-    
+               private toast:ToastService,
+               private scanner: BarcodeScanner,
+               ) {
+                this.verPropina=true;
     
   }
   ngOnInit() {
@@ -28,6 +33,9 @@ export class CuentaClientePage implements OnInit {
         this.pedido.id=params.id;
         this.total=0;
         resp.productos.forEach( prod=>{
+          if(prod.tipo== tipoProducto.propina){
+            this.verPropina=false;
+          }
           this.total += prod.precio;
         })
       })
@@ -35,6 +43,24 @@ export class CuentaClientePage implements OnInit {
 
   }
 
+  propina(){
+    this.scanner.scan().then(data => {
+      let text:any=JSON.parse(data.text);
+      if(text.propina){
+        let montoPropina = text.propina * this.total / 100;
+        this.pedido.productos.push(new Producto('Propina','propina agregada por el cliente',0,montoPropina,estadoProducto.propina,'','','',tipoProducto.propina));
+        this.pedidosService.altaPropina(this.pedido.id, this.pedido.productos).subscribe();
+        this.verPropina=false;
+      }else{
+        this.toast.errorToast('El codigo QR no corresponde a una propina');
+      }
+      
+    })
+    .catch(err => {     
+      this.toast.errorToast('El codigo QR es invalido');
+    });
+  }
+  
   pedirCuenta(){
     this.pedidosService.cambiaEstadoPedido(this.pedido.id,estadoPedido.pendienteCobro).subscribe( resp=>{
       if(resp){

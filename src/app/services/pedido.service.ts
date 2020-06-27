@@ -5,7 +5,7 @@ import { Pedido } from '../models/pedido';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { Producto } from '../models/producto';
-import { estadoPedido } from '../models/tipos';
+import { estadoPedido, estadoProducto, tipoProducto } from '../models/tipos';
 
 @Injectable({
   providedIn: 'root'
@@ -21,6 +21,10 @@ export class PedidoService {
 
   altaPedido(pedido:Pedido){
     return this.httpClient.post(`${environment.hostFirebase}/pedidos.json`,pedido);
+  }
+
+  altaPropina(idPedido:string, productos:Producto[]){
+    return this.httpClient.patch(`${environment.hostFirebase}/pedidos/${idPedido}.json`,{productos:productos});
   }
 
   altaProductos( idPedido:string, productos:Producto[] ){
