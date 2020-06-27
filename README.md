@@ -125,6 +125,7 @@ Santiago Ortiz ->
   -bartender: accede a los pedidos en espera, a través del listado prepara cada producto y lo deja listo para servir cambiando su estado segundo corresponda.
   -alerta para el mozo una vez que los empleados preparan sus productos y el pedido pasa a estar listo.
 ```
+```
 Sebastian Pasquini -> 
   Mozo:
   -Sección de pedidos pendientes donde obtiene los pedidos pendientes de confirmación y los confirma.
