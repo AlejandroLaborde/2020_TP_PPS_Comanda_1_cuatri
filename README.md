@@ -140,4 +140,13 @@ Alejandro Laborde Parodi ->
   - boton de "pedir cuenta" + pagina de cuenta cliente donde se visualiza los pedidos y el inporte, al enviar se cambia el estado del pedido a pendiente de cobro
   
 ```
-
+## OBSERVACIONES Y PENDIENTES en reunion de equipo 27/06 :computer:
+```
+  1_ Revisar flujo de cliente anonimo
+  2_ Agregar dni y sexo en registro y buscarlos en el lector
+  3_ Agregar un estado nuevo "mesaAsociada" al pedido cuando el cliente escanea el qr de la mesa
+  4_ Agregar pestaña en mozo que visualice el estado del pedido en preparacion
+  5_ Verificar en cocinero y bartender que no cambie el estado a listo una vez que el pedido esta servido
+  6_ Agregar boton para dar propina
+  7_ Mozo confirma el pago y libera la mesa
+```
