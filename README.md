@@ -26,7 +26,7 @@ Sebastian Pasquini -> Icono
 Alejandro Laborde Parodi -> Preparación de entorno de desarrollo, conexion a firebase y readme.
 ```
 
-## Sábado 30/05 al 6/05 :computer:
+## Sábado 30/05 al 6/06 :computer:
 
 Objetivos:
 ```
@@ -37,7 +37,7 @@ Alejandro Laborde Parodi -> servicios de integracion
 Se logro cumplir con los objetivos fijados
 ```
 
-## Sábado 06/05 al 13/05 :computer:
+## Sábado 06/06 al 13/06 :computer:
 
 ```
 Santiago Ortiz ->
@@ -76,7 +76,7 @@ Alejandro Laborde Parodi ->
   -Por el momento me queda pendiente como tarea el alta de un pedido, lo tome para esta iteracion y todavia no llegue a cumplirlo.
 ```
 
-## Sábado 13/05 al 20/05 :computer:
+## Sábado 13/06 al 20/06 :computer:
 
 ```
 Santiago Ortiz ->
@@ -116,7 +116,7 @@ Alejandro Laborde Parodi ->
    acceder a encuestas y juegos
 ```
 
-## Sábado 21/05 al 27/05 :computer:
+## Sábado 21/06 al 27/06 :computer:
 
 ```
 Santiago Ortiz ->
