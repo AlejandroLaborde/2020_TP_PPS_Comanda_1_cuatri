@@ -26,10 +26,19 @@ const routes: Routes = [
     loadChildren: () => import('./pages/mi-pedido/mi-pedido.module').then( m => m.MiPedidoPageModule)
   },
   {
+    path: 'cocinero',
+    loadChildren: () => import('./pages/cocinero/cocinero.module').then( m => m.CocineroPageModule)
+  },
+  {
+    path: 'bartender',
+    loadChildren: () => import('./pages/bartender/bartender.module').then( m => m.BartenderPageModule)
+  },
+  {
     path: 'mozo',
     loadChildren: () => import('./pages/mozo/mozo.module').then( m => m.MozoPageModule)
   }
-  ,{  path: '',    redirectTo: 'login',    pathMatch: 'full'  },  {
+  ,{  path: '',    redirectTo: 'login',    pathMatch: 'full'  },
+  {
     path: 'opciones-cliente',
     loadChildren: () => import('./pages/opciones-cliente/opciones-cliente.module').then( m => m.OpcionesClientePageModule)
   },

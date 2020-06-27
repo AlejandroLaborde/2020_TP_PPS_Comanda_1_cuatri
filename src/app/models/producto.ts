@@ -1,4 +1,4 @@
-import { estadoProducto } from './tipos';
+import { estadoProducto, tipoProducto } from './tipos';
 
 
 export class Producto{
@@ -12,9 +12,11 @@ export class Producto{
     public foto1:string;
     public foto2:string;
     public foto3:string;
+    public tipo: tipoProducto;
+    public idBD;
 
 
-    constructor(nombre:string,descripcion:string,tiempoPreparacion:number,precio:number, estado:estadoProducto,foto1:string,foto2:string,foto3:string,id?:string){
+    constructor(nombre:string,descripcion:string,tiempoPreparacion:number,precio:number, estado:estadoProducto,foto1:string,foto2:string,foto3:string,tipo:tipoProducto,id?:string){
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.tiempoPreparacion = tiempoPreparacion;
@@ -23,6 +25,7 @@ export class Producto{
         this.foto1 = foto1;
         this.foto2 = foto2;
         this.foto3 = foto3;
+        this.tipo = tipo;
         if (id){
             this.id = id;
         }

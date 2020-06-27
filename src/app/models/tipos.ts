@@ -6,6 +6,12 @@ export enum estadoProducto{
     listo= 'listo',
 }
 
+export enum tipoProducto{
+    
+    comida= 'comida',
+    bebida= 'bebida'
+}
+
 export enum estadoConsulta{
     
     pendiente= 'pendiente',

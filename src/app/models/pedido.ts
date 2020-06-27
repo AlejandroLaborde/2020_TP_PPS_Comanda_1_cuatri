@@ -13,5 +13,6 @@ export class Pedido{
     public mesa: Mesa;
     public productos: Producto[];
     public estado: estadoPedido;
+    public idBD: string;
 
 }
