@@ -107,20 +107,22 @@ comidaLista(producto:Producto, pedido:Pedido){
   this.cambiarEnBD(producto, pedido).subscribe( res =>{
     this.productos = [];
     this.pedidoService.obtenerPedido(pedido.idBD).subscribe( (ped:Pedido)=>{
-      this.pedidosListos = [];
-      this.listo = true;
-      ped.productos.forEach( (prod:Producto)=>{
-        if (prod.estado != estadoProducto.listo) {
-          this.listo = false;
+      if(ped.estado == estadoPedido.preparandose){
+        this.listo = true;
+        ped.productos.forEach( (prod:Producto)=>{
+          if (prod.estado != estadoProducto.listo) {
+            this.listo = false;
+          }
+        });
+        if (this.listo) {
+          this.httpClient.patch(`${environment.hostFirebase}/pedidos/${pedido.idBD}.json`,
+            {estado:estadoPedido.listo}).subscribe( res=>{
+              this.toast.confirmationToast('Pedido listo para servir!');
+
+            });
         }
-        
-      });
-      if (this.listo) {
-        this.httpClient.patch(`${environment.hostFirebase}/pedidos/${pedido.idBD}.json`,
-          {estado:estadoPedido.listo}).subscribe( res=>{
-            this.toast.confirmationToast('Pedido listo para servir!');
-          });
       }
+      
     });
   });
 

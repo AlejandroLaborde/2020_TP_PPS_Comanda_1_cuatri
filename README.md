@@ -26,7 +26,7 @@ Sebastian Pasquini -> Icono
 Alejandro Laborde Parodi -> Preparación de entorno de desarrollo, conexion a firebase y readme.
 ```
 
-## Sábado 30/05 al 6/05 :computer:
+## Sábado 30/05 al 6/06 :computer:
 
 Objetivos:
 ```
@@ -37,7 +37,7 @@ Alejandro Laborde Parodi -> servicios de integracion
 Se logro cumplir con los objetivos fijados
 ```
 
-## Sábado 06/05 al 13/05 :computer:
+## Sábado 06/06 al 13/06 :computer:
 
 ```
 Santiago Ortiz ->
@@ -76,7 +76,7 @@ Alejandro Laborde Parodi ->
   -Por el momento me queda pendiente como tarea el alta de un pedido, lo tome para esta iteracion y todavia no llegue a cumplirlo.
 ```
 
-## Sábado 13/05 al 20/05 :computer:
+## Sábado 13/06 al 20/06 :computer:
 
 ```
 Santiago Ortiz ->
@@ -116,3 +116,37 @@ Alejandro Laborde Parodi ->
    acceder a encuestas y juegos
 ```
 
+## Sábado 21/06 al 27/06 :computer:
+
+```
+Santiago Ortiz ->
+  -modificaciones en producto y pedido para el manejo de empleados
+  -cocinero: accede a los pedidos en espera, a través del listado prepara cada producto y lo deja listo para servir cambiando su estado segundo corresponda.
+  -bartender: accede a los pedidos en espera, a través del listado prepara cada producto y lo deja listo para servir cambiando su estado segundo corresponda.
+  -alerta para el mozo una vez que los empleados preparan sus productos y el pedido pasa a estar listo.
+```
+```
+Sebastian Pasquini -> 
+  Mozo:
+  -Sección de pedidos pendientes donde obtiene los pedidos pendientes de confirmación y los confirma.
+  -Sección de pedidos listos donde obtiene los pedidos que están listos para servir y al servirlos le cambia el estado a servido.
+ ```
+ ```
+Alejandro Laborde Parodi -> 
+  - Pagina Opciones Cliente, se visualizan opciones de ver estado, juegos y encuestas
+  - pagina de estado, desde este lugar se observa el estado del pedido y permite solicitar la cuenta una vez que el pedido esta servido
+  - push notification en la pagina de miPedido, cuando el pedido esta servido
+  - confirmacion del cliente cuando esta servido
+  - boton de "pedir cuenta" + pagina de cuenta cliente donde se visualiza los pedidos y el inporte, al enviar se cambia el estado del pedido a pendiente de cobro
+  
+```
+## OBSERVACIONES Y PENDIENTES en reunion de equipo 27/06 :computer:
+```
+  1_ Revisar flujo de cliente anonimo
+  2_ Agregar dni y sexo en registro y buscarlos en el lector
+  3_ Agregar un estado nuevo "mesaAsociada" al pedido cuando el cliente escanea el qr de la mesa
+  4_ Agregar pestaña en mozo que visualice el estado del pedido en preparacion
+  5_ Verificar en cocinero y bartender que no cambie el estado a listo una vez que el pedido esta servido
+  6_ Agregar boton para dar propina
+  7_ Mozo confirma el pago y libera la mesa
+```
