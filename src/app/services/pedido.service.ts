@@ -66,6 +66,10 @@ export class PedidoService {
     return pedido;
   }
 
+  updatePedido( pedido ) {
+    return this.httpClient.put(`${environment.hostFirebase}/pedidos/${pedido.id}.json`, pedido);
+  }
+
   private objecToArray( datos: Object ){
     const peididos = [];
     if(datos == null) return [];
