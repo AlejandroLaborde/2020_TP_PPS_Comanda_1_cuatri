@@ -16,6 +16,7 @@ export class MozoPage implements OnInit {
   consultas = [];
   pedidosPendientes = [];
   pedidosListos = [];
+  cantListos = 100000;
   cantConsultas = 100000;
   pedidosAConfirmar = true;
   pedidosAEntregar: boolean;
@@ -64,6 +65,14 @@ export class MozoPage implements OnInit {
           this.pedidosListos.push(pedido);
         }
       });
+      if(this.pedidosListos.length > this.cantListos){
+        Swal.fire({
+          icon: 'info',
+          title: 'Pedidos',
+          text: 'Hay un pedido listo para entregar!',
+        });
+      }
+      this.cantListos = this.pedidosListos.length;
     });
   }
 

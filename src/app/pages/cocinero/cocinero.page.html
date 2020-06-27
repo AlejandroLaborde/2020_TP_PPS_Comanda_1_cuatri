@@ -1,21 +1,37 @@
 <ion-header>
   <ion-toolbar color="primary">
-    <ion-title>Cocinero</ion-title>
+    <ion-title>COCINERO</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding color="dark"> 
-
   <br>
   <ion-list-header lines="inset" color="dark">
-    <ion-label>LISTADO DE PEDIDOS</ion-label>
+    <h3>LISTADO DE PEDIDOS</h3>
   </ion-list-header>
-<div *ngFor="let pedido of pedidos ">
-  <ion-item color="dark">
-    <ion-label>{{pedido.mesa.nombrePublico}} </ion-label>
-    <ion-button fill="outline" (click)="cocinarPedido(pedido)">Preparar</ion-button>
-  </ion-item>
-</div>
-
-</ion-content>
+  <br>
+  <ion-card color="dark" *ngFor="let pedido of pedidos">
+    <ion-card-header color="dark">
+      <ion-card-title (click)="detallesPedido(pedido)">{{pedido.mesa.nombrePublico}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content color="dark" *ngIf="idActivo == pedido.idBD">
+      <div color="dark" *ngFor="let producto of productos">
+        <ion-item color="dark" *ngIf="producto.estado == 'espera'">
+          <ion-label>{{producto.nombre}}</ion-label>
+          <ion-button color="danger" (click)="prepararComida(producto, pedido)">Preparar</ion-button>
+        </ion-item>
+        <ion-item color="dark" *ngIf="producto.estado == 'preparacion'">
+          <ion-label>{{producto.nombre}}</ion-label>
+          <ion-button color="success" (click)="comidaLista(producto, pedido)">Listo</ion-button>
+        </ion-item>
+      </div>
+      <ion-item color="dark" *ngIf="terminado">
+        <ion-label>Todo listo, esperando al bartender</ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+<ion-item color="dark" *ngIf="noHayPedidos" lines="inset">
+  <ion-label>No hay pedidos disponibles.</ion-label>
+</ion-item>
+</ion-content> 
 
