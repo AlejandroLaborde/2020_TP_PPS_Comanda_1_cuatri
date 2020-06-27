@@ -33,7 +33,7 @@
         <ion-card-content>
           <div *ngFor="let producto of pedido.productos | keyvalue">
             <div style="margin-bottom: 10px;">
-              <ion-label>{{producto.value.nombre}}</ion-label>
+              <ion-label class="color-labels">{{producto.value.nombre}}</ion-label>
             </div>
           </div>
           <div>  
@@ -57,7 +57,7 @@
         </ion-card-header>
         <ion-card-content>
           <div *ngFor="let producto of pedido.productos | keyvalue" style="margin-bottom: 10px;">
-            <ion-label>{{producto.value.nombre}}</ion-label>
+            <ion-label class="color-labels">{{producto.value.nombre}}</ion-label>
           </div>
           <div>  
             <ion-button fill="outline" (click)="servirPedido(pedido)"> SERVIR PEDIDO </ion-button>
@@ -80,7 +80,7 @@
         </ion-card-header>
         <ion-card-content style="font-size: 20px;">
           <div style="margin-bottom: 10px;">
-            <ion-label>{{consulta.consulta}}</ion-label>
+            <ion-label class="color-labels">{{consulta.consulta}}</ion-label>
           </div>
           <div>  
             <ion-button fill="outline" (click)="responderConsulta(consulta)"> RESPONDIDA </ion-button>
