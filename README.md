@@ -116,3 +116,27 @@ Alejandro Laborde Parodi ->
    acceder a encuestas y juegos
 ```
 
+## Sábado 21/05 al 27/05 :computer:
+
+```
+Santiago Ortiz ->
+  -modificaciones en producto y pedido para el manejo de empleados
+  -cocinero: accede a los pedidos en espera, a través del listado prepara cada producto y lo deja listo para servir cambiando su estado segundo corresponda.
+  -bartender: accede a los pedidos en espera, a través del listado prepara cada producto y lo deja listo para servir cambiando su estado segundo corresponda.
+  -alerta para el mozo una vez que los empleados preparan sus productos y el pedido pasa a estar listo.
+```
+Sebastian Pasquini -> 
+  Mozo:
+  -Sección de pedidos pendientes donde obtiene los pedidos pendientes de confirmación y los confirma.
+  -Sección de pedidos listos donde obtiene los pedidos que están listos para servir y al servirlos le cambia el estado a servido.
+ ```
+ ```
+Alejandro Laborde Parodi -> 
+  - Pagina Opciones Cliente, se visualizan opciones de ver estado, juegos y encuestas
+  - pagina de estado, desde este lugar se observa el estado del pedido y permite solicitar la cuenta una vez que el pedido esta servido
+  - push notification en la pagina de miPedido, cuando el pedido esta servido
+  - confirmacion del cliente cuando esta servido
+  - boton de "pedir cuenta" + pagina de cuenta cliente donde se visualiza los pedidos y el inporte, al enviar se cambia el estado del pedido a pendiente de cobro
+  
+```
+
