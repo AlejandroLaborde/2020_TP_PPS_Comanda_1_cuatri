@@ -55,25 +55,15 @@ export class ClientePage implements OnInit {
                 this.clienteActual = respuesta;
                 this.verificaPedidoExistente(respuesta.id);
                 this.clienteService.obtenerCLiente(respuesta.id).subscribe((resp:any) =>{
-                  this.idClienteFirebase = resp.id;
                   this.clienteActual = resp;
                 });
-            })
+            });
           }
-        }) 
+        });
       });
   }
 
   ngOnInit() {
-    
-      this.clienteService.obtenerClientes().snapshotChanges().forEach( clientesSnapshot => {
-        clientesSnapshot.forEach( snapshot => {
-          const cliente = snapshot.payload.toJSON() as Cliente;
-          if( cliente.nombre === this.clienteActual.nombre ) {
-              this.clienteActual = cliente;
-          }
-        });
-      });
   }
 
   ponerEnEspera( dato ){
