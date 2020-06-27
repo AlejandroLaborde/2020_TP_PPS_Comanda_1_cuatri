@@ -17,6 +17,8 @@ export class RegistroPage implements OnInit {
   nombre = '';
   apellido = '';
   email = '';
+  dni = '';
+  sexo = '';
   clave = '';
   confirmarClave = '';
   alias = '';
@@ -33,9 +35,14 @@ export class RegistroPage implements OnInit {
     this.registroCompleto = event.detail.value === '0' ? true : false;
   }
 
-  validarSoloLetras( valor ) {
+  validarSoloLetras( valor, nombre ) {
     if (valor === undefined || valor === '' || !/^[A-Za-z\s\xF1\xD1]+$/.test(valor)) {
-      this.toastService.errorToast('Formato de nombre y/o apellido inválido');
+      if ( nombre ) {
+        this.toastService.errorToast('Formato de nombre y/o apellido inválido');
+      }
+      else {
+        this.toastService.errorToast('Formato de sexo inválido');
+      }
       return false;
     }
     return true;
@@ -49,6 +56,22 @@ export class RegistroPage implements OnInit {
     return true;
   }
 
+  validarDNI( dni: string ) {
+    if ( dni.length < 6 || dni.length > 8 ) {
+      this.toastService.errorToast('DNI: Cantidad de dígitos inválida');
+      return false;
+    }
+    else {
+      for ( const caracter of dni ) {
+        if ( isNaN( parseInt( caracter, 10 )) ) {
+          this.toastService.errorToast('Formato de dni inválido');
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
   validarContraseña( clave, claveConfirmada ) {
     if ( clave !== claveConfirmada ) {
       this.toastService.errorToast('La contraseña no se confirmó correctamente');
@@ -58,10 +81,12 @@ export class RegistroPage implements OnInit {
   }
 
   enviarDatos() {
-    if ( this.validarSoloLetras( this.nombre ) && this.validarSoloLetras(this.apellido) && this.validarEmail(this.email)
-        && this.validarContraseña(this.clave, this.confirmarClave )) {
+    if ( this.validarSoloLetras( this.nombre, true ) && this.validarSoloLetras(this.apellido, true) && this.validarEmail(this.email)
+        && this.validarContraseña(this.clave, this.confirmarClave ) && this.validarDNI( this.dni ) &&
+        this.validarSoloLetras( this.sexo, false )) {
 
-      this.cliente = new Cliente(this.nombre, this.email, tipoCliente.registrado, this.clave, false, estadoCliente.off, this.apellido);
+      this.cliente = new Cliente(this.nombre, this.email, this.dni, this.sexo, tipoCliente.registrado, this.clave, false,
+                                 estadoCliente.off, this.apellido);
       this.registroService.registraCliente( this.cliente )
       .then( respuesta => {
         this.cliente.id = respuesta.user.uid;
@@ -80,7 +105,7 @@ export class RegistroPage implements OnInit {
   }
 
   registroAnonimo() {
-    this.cliente = new Cliente( this.alias, this.email, tipoCliente.anonimo, this.clave, true, estadoCliente.off);
+    this.cliente = new Cliente( this.alias, this.email, this.dni, this.sexo, tipoCliente.anonimo, this.clave, true, estadoCliente.off);
     this.registroService.registraClienteEnBD( this.cliente )
     .subscribe( res => {
       this.alias = '';
@@ -121,10 +146,10 @@ export class RegistroPage implements OnInit {
   }
 
   recibirQR(datos) {
-    var split = datos.text.split("@");
-    this.nombre= split[5];
-    this.apellido=split[4];
-    //this.registroForm.controls['dni'].setValue(parseInt(split[4]));
+    const split = datos.text.split('@');
+    this.nombre = split[5];
+    this.apellido = split[4];
+    // this.registroForm.controls['dni'].setValue(parseInt(split[4]));
   }
 
   ngOnInit() {
