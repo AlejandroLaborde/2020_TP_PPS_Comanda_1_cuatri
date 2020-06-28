@@ -12,21 +12,21 @@ export class Cliente extends Usuario{
     public estado: estadoCliente;
     public idBD: string;
 
-    constructor(nombre: string, email: string, tipo: tipoCliente, clave: string, aprobado: boolean, estadoCliente: estadoCliente,
-                apellido?: string, id?: string, foto?: string){
+    constructor(nombre: string, email: string, dni: string, sexo: string, tipo: tipoCliente, clave: string, aprobado: boolean, 
+                estadoCliente: estadoCliente, apellido?: string, id?: string, foto?: string){
 
         if (tipo === 'anonimo'){
             if (id){
-                super(nombre, '', email, id);
+                super(nombre, '', email, dni, sexo, id);
             }else{
-                super(nombre, '', email);
+                super(nombre, '', email, dni, sexo);
             }
 
-        }else{  
+        }else{
             if (id){
-                super(nombre, apellido, email, id);
+                super(nombre, apellido, email, dni, sexo, id);
             }else{
-                super(nombre, apellido, email);
+                super(nombre, apellido, email, dni, sexo);
             }
         }
         this.clave = clave;

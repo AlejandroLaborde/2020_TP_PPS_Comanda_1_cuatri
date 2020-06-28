@@ -14,5 +14,6 @@ export class Pedido{
     public productos: Producto[];
     public estado: estadoPedido;
     public idBD: string;
+    public total: number;
 
 }
