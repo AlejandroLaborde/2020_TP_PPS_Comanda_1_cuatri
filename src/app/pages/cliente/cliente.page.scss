@@ -9,6 +9,10 @@
     --ion-background-color:#222428;
   }
 
+  ion-ripple-effect{
+    background-color: rgb(1024, 1024,1024);
+    opacity: 30%;
+  }
   
   .esperando{
     display: flex;
@@ -98,7 +102,10 @@
   }
 
   .texto{
-    color: cornflowerblue;
+    color: cyan;
+    text-shadow: 2px 2px 3px black, 2px 2px 20px white;
     text-align: center;
-    font: italic bold 25px Georgia, Serif;
+    font: italic bold 30px Georgia, Serif;
   }
+
+
