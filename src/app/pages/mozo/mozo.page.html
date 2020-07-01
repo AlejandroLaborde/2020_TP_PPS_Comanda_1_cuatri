@@ -49,6 +49,28 @@
     </div>
   </div>
 
+  <div *ngIf="preparandose">
+    <div *ngIf="pedidosPreparando.length !== 0">
+      <ion-card *ngFor="let pedido of pedidosPreparando" style="background-color: #222428;">
+        <ion-card-header>
+          <ion-card-title style="color: white;"> {{pedido.mesa.nombrePublico}} </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <div *ngFor="let producto of pedido.productos | keyvalue">
+            <div style="margin-bottom: 10px;">
+              <ion-label class="color-labels">{{producto.value.nombre}} ({{producto.value.estado}})</ion-label>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+    <div *ngIf="pedidosPreparando.length === 0">
+      <ion-item color="dark">
+        <ion-label >Sin pedidos preparandose</ion-label>
+      </ion-item>
+    </div>
+  </div>
+
   <div *ngIf="pedidosAEntregar">
     <div *ngIf="pedidosListos.length !== 0">
       <ion-card *ngFor="let pedido of pedidosListos" style="background-color: #222428;">

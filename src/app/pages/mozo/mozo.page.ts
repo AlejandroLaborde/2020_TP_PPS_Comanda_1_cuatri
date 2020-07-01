@@ -14,9 +14,10 @@ import { PedidoService } from 'src/app/services/pedido.service';
   styleUrls: ['./mozo.page.scss'],
 })
 export class MozoPage implements OnInit {
-
+ 
   consultas = [];
   pedidosPendientes = [];
+  pedidosPreparando = [];
   pedidosListos = [];
   pedidosCobro = [];
   cantListos = 100000;
@@ -25,8 +26,9 @@ export class MozoPage implements OnInit {
   pedidosAEntregar: boolean;
   consultasClientes: boolean;
   cobrar: boolean;
-  secciones = [ { id: 0, descripcion: 'P. Pendientes'} , { id: 1, descripcion: 'P. Listos'}, {id: 2, descripcion: 'Consultas'},
-                { id: 3, descripcion: 'Cobrar'} ];
+  preparandose: boolean;
+  secciones = [ { id: 0, descripcion: 'P. Pendientes'} , { id: 1, descripcion: 'P. Preparandose'}, {id: 2, descripcion: 'P.Listos'},
+                { id: 3, descripcion: 'Consultas'}, { id: 4, descripcion: 'Cobrar'}];
 
   constructor(private mozoService: MozoService, private toastService: ToastService, private mesaService: MesasService, 
               private pedidoService: PedidoService) { }
@@ -62,11 +64,15 @@ export class MozoPage implements OnInit {
       this.pedidosPendientes = [];
       this.pedidosListos = [];
       this.pedidosCobro = [];
+      this.pedidosPreparando = [];
       pedidosSnapshot.forEach( snapshot => {
         const pedido = snapshot.payload.toJSON() as Pedido;
         pedido.id = snapshot.payload.key;
         if ( pedido.estado === estadoPedido.inicial ) {
           this.pedidosPendientes.push(pedido);
+        }
+        if ( pedido.estado === estadoPedido.preparandose ) {
+          this.pedidosPreparando.push(pedido);
         }
         if ( pedido.estado === estadoPedido.listo ) {
           this.pedidosListos.push(pedido);
@@ -92,6 +98,7 @@ export class MozoPage implements OnInit {
     switch (event.detail.value ) {
       case '0':
         this.pedidosAConfirmar = true;
+        this.preparandose = false;
         this.pedidosAEntregar = false;
         this.consultasClientes = false;
         this.cobrar = false;
@@ -99,20 +106,31 @@ export class MozoPage implements OnInit {
 
       case '1':
         this.pedidosAConfirmar = false;
-        this.pedidosAEntregar = true;
+        this.preparandose = true;
+        this.pedidosAEntregar = false;
         this.consultasClientes = false;
         this.cobrar = false;
         break;
 
       case '2':
         this.pedidosAConfirmar = false;
-        this.pedidosAEntregar = false;
-        this.consultasClientes = true;
+        this.preparandose = false;
+        this.pedidosAEntregar = true;
+        this.consultasClientes = false;
         this.cobrar = false;
         break;
 
       case '3':
         this.pedidosAConfirmar = false;
+        this.preparandose = false;
+        this.pedidosAEntregar = false;
+        this.consultasClientes = true;
+        this.cobrar = false;
+        break;
+      
+      case '4':
+        this.pedidosAConfirmar = false;
+        this.preparandose = false;
         this.pedidosAEntregar = false;
         this.consultasClientes = false;
         this.cobrar = true;
