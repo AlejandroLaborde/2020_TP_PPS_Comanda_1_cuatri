@@ -6,6 +6,7 @@ import { Pedido } from 'src/app/models/pedido';
 import { estadoPedido, tipoProducto, estadoProducto } from 'src/app/models/tipos';
 import { Producto } from 'src/app/models/producto';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-bartender',
@@ -21,6 +22,7 @@ export class BartenderPage implements OnInit {
   productos = [];
   listo = false;
   idActivo = '';
+  cantPed = 100000;
 
   constructor(private pedidoService: PedidoService, private toast: ToastService,
      private httpClient:HttpClient) { }
@@ -41,6 +43,14 @@ export class BartenderPage implements OnInit {
             this.noHayPedidos = true;
           }
         });
+        if ( this.pedidos.length > this.cantPed ) {
+          Swal.fire({
+            icon: 'info',
+            title: 'Pedidos',
+            text: 'Ingreso un nuevo pedido!',
+          });
+        }
+        this.cantPed = this.pedidos.length;
       });
     }
 
