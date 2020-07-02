@@ -88,7 +88,7 @@ export class ClientePage implements OnInit {
             this.pedidosService.cambiaEstadoPedido(pedidoExistente.id,estadoPedido.confirmadoCliente).subscribe();
           }else{
 
-            // aca que hacemos cuando no le llega?
+            this.pedidosService.cambiaEstadoPedido(pedidoExistente.id,estadoPedido.listo).subscribe();
           }
         })
       }
