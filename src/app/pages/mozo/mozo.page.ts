@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MozoService } from 'src/app/services/mozo.service';
 import { Consulta } from 'src/app/models/consulta';
-import { estadoConsulta, estadoPedido, estadoMesa } from 'src/app/models/tipos';
+import { estadoConsulta, estadoPedido, estadoMesa, estadoCliente } from 'src/app/models/tipos';
 import Swal from 'sweetalert2';
 import { ToastService } from 'src/app/services/toast.service';
 import { Pedido } from 'src/app/models/pedido';
 import { MesasService } from 'src/app/services/mesas.service';
 import { PedidoService } from 'src/app/services/pedido.service';
+import { ClientesService } from 'src/app/services/clientes.service';
 
 @Component({
   selector: 'app-mozo',
@@ -31,7 +32,7 @@ export class MozoPage implements OnInit {
                 { id: 3, descripcion: 'Consultas'}, { id: 4, descripcion: 'Cobrar'}];
 
   constructor(private mozoService: MozoService, private toastService: ToastService, private mesaService: MesasService, 
-              private pedidoService: PedidoService) { }
+              private pedidoService: PedidoService, private clienteService: ClientesService ) { }
 
   ngOnInit() {
     this.obtenerConsultas();
@@ -165,6 +166,7 @@ export class MozoPage implements OnInit {
     .subscribe( respuesta => {
       this.mesaService.cambiarEstadoMesa( pedido.mesa.id, estadoMesa.libre )
       .subscribe( res => {
+        this.clienteService.cambiarEstadoCliente( pedido.cliente.id, estadoCliente.off );
         this.toastService.confirmationToast('La ' + pedido.mesa.nombrePublico + ' quedó libre');
       });
     });
