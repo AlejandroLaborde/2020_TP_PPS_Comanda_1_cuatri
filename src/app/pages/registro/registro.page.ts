@@ -143,12 +143,16 @@ export class RegistroPage implements OnInit {
     this.email = '';
     this.clave = '';
     this.confirmarClave = '';
+    this.sexo='';
+    this.dni='';
   }
 
   recibirQR(datos) {
     const split = datos.text.split('@');
+    this.dni= split[1];
     this.nombre = split[5];
     this.apellido = split[4];
+    this.sexo=split[8];
     // this.registroForm.controls['dni'].setValue(parseInt(split[4]));
   }
 
