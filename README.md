@@ -2,6 +2,18 @@
 ![La Comanda](https://github.com/AlejandroLaborde/2020_TP_PPS_Comanda_1_cuatri/blob/master/proyecto/imagenes/presentacion.jpg)
 ### Desarrolladores 🔧
 
+
+<div class="row">
+  <div class="column" style="background-color:#aaa;">
+    <h2>Column 1</h2>
+    <p>Some text..</p>
+  </div>
+  <div class="column" style="background-color:#bbb;">
+    <h2>Column 2</h2>
+    <p>Some text..</p>
+  </div>
+</div>
+
 ```
 Alejandro Laborde Parodi
 Santiago Ortiz
