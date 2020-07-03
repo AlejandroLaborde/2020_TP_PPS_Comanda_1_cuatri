@@ -152,3 +152,12 @@ Alejandro Laborde Parodi ->
   6_ Agregar boton para dar propina
   7_ Mozo confirma el pago y libera la mesa
 ```
+
+## OBSERVACIONES Y PENDIENTES en reunion de equipo 02/06 :computer:
+```
+ 1_ Agregar Push notification a cocineros y bartender al momento de recibir pedidos
+ 2_ Como cliente, al rechazar la confirmacion de recepcion pedido, enviar notificacion al mozo.
+ 3_ Pantalla Supervisor, arreglar header
+ 4_ Al momento de liberar una mesa, tambien cambiar el estado del cliente a 'off'
+```
+
