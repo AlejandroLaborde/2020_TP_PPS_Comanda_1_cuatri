@@ -166,7 +166,7 @@ export class MozoPage implements OnInit {
     .subscribe( respuesta => {
       this.mesaService.cambiarEstadoMesa( pedido.mesa.id, estadoMesa.libre )
       .subscribe( res => {
-        this.clienteService.cambiarEstadoCliente( pedido.cliente.id, estadoCliente.off );
+        this.clienteService.cambiarEstadoCliente( pedido.cliente.id, estadoCliente.off ).subscribe();
         this.toastService.confirmationToast('La ' + pedido.mesa.nombrePublico + ' quedó libre');
       });
     });
