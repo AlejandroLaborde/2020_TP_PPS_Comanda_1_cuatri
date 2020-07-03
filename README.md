@@ -16,6 +16,11 @@ Sebastian Pasquini
 
 El sistema cuenta con conexion a [Firebase](https://console.firebase.google.com/project/lacomanda-pps/overview), donde alojamos nuestra base de datos, storage y autentificacion para los usuarios.
 
+| Bartender | Mozo | Cliente |
+| ------ | ------ | ------ |
+| ![](https://github.com/AlejandroLaborde/2020_TP_PPS_Comanda_1_cuatri/blob/master/proyecto/imagenes/bar.gif)| 
+ ![](https://github.com/AlejandroLaborde/2020_TP_PPS_Comanda_1_cuatri/blob/master/proyecto/imagenes/mozo.gif)| 
+ ![](https://github.com/AlejandroLaborde/2020_TP_PPS_Comanda_1_cuatri/blob/master/proyecto/imagenes/clien.gif)| 
 
 Como herramienta para organizacion interna, estamos usando [Trello](https://trello.com/b/os8TqQu6/trabajo-practico-pps), nos permite de forma sencilla organizar cada iteracion
 
