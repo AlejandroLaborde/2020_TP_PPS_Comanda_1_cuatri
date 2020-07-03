@@ -1,8 +1,7 @@
 # **2020_TP_PPS_Comanda_1_cuatri**
 ![La Comanda](https://github.com/AlejandroLaborde/2020_TP_PPS_Comanda_1_cuatri/blob/master/proyecto/imagenes/presentacion.jpg)
+
 ### Desarrolladores 🔧
-
-
 
 ```
 Alejandro Laborde Parodi
@@ -26,7 +25,18 @@ Nuestro sistema cuenta con notificaciones hacia los diferentes usuarios, para ma
 | ![](https://github.com/AlejandroLaborde/2020_TP_PPS_Comanda_1_cuatri/blob/master/proyecto/imagenes/bar.gif)|  ![](https://github.com/AlejandroLaborde/2020_TP_PPS_Comanda_1_cuatri/blob/master/proyecto/imagenes/mozo.gif)|  ![](https://github.com/AlejandroLaborde/2020_TP_PPS_Comanda_1_cuatri/blob/master/proyecto/imagenes/clien.gif)| 
 
 
-## Sábado 23/05 al 30/05 :computer:
+## Experiencia del usuario :heart_eyes:
+Nos enfocamos en tener una interface facil de usar, y comprender. Donde nuestros clientes no se sientan perdidos al navegar por la aplicacion.
+
+| #1 | #2 | #3 |
+| ------ | ------ | ------ |
+| ![](https://github.com/AlejandroLaborde/2020_TP_PPS_Comanda_1_cuatri/blob/master/proyecto/imagenes/Screenshot_20200702-220423_La%20Comanda.jpg)|  ![](https://github.com/AlejandroLaborde/2020_TP_PPS_Comanda_1_cuatri/blob/master/proyecto/imagenes/Screenshot_20200702-223211_La%20Comanda.jpg)|  ![](https://github.com/AlejandroLaborde/2020_TP_PPS_Comanda_1_cuatri/blob/master/proyecto/imagenes/Screenshot_20200702-223157_La%20Comanda.jpg)| 
+
+
+
+# Detalles construccion
+
+## Sprint 1 - Sábado 23/05 al 30/05 :computer:
 Build: [APK](https://github.com/AlejandroLaborde/2020_TP_PPS_Comanda_1_cuatri/tree/master/proyecto/builds/30-05-2020)
 ```
 Santiago Ortiz Splash -> animado
@@ -34,7 +44,7 @@ Sebastian Pasquini -> Icono
 Alejandro Laborde Parodi -> Preparación de entorno de desarrollo, conexion a firebase y readme.
 ```
 
-## Sábado 30/05 al 6/06 :computer:
+## Sprint 2 - Sábado 30/05 al 6/06 :computer:
 
 Objetivos:
 ```
@@ -45,7 +55,7 @@ Alejandro Laborde Parodi -> servicios de integracion
 Se logro cumplir con los objetivos fijados
 ```
 
-## Sábado 06/06 al 13/06 :computer:
+## Sprint 3 - Sábado 06/06 al 13/06 :computer:
 
 ```
 Santiago Ortiz ->
@@ -84,7 +94,7 @@ Alejandro Laborde Parodi ->
   -Por el momento me queda pendiente como tarea el alta de un pedido, lo tome para esta iteracion y todavia no llegue a cumplirlo.
 ```
 
-## Sábado 13/06 al 20/06 :computer:
+## Sprint 4 - Sábado 13/06 al 20/06 :computer:
 
 ```
 Santiago Ortiz ->
@@ -124,7 +134,7 @@ Alejandro Laborde Parodi ->
    acceder a encuestas y juegos
 ```
 
-## Sábado 21/06 al 27/06 :computer:
+## Sprint 5 - Sábado 21/06 al 27/06 :computer:
 
 ```
 Santiago Ortiz ->
@@ -148,7 +158,7 @@ Alejandro Laborde Parodi ->
   - boton de "pedir cuenta" + pagina de cuenta cliente donde se visualiza los pedidos y el inporte, al enviar se cambia el estado del pedido a pendiente de cobro
   
 ```
-## OBSERVACIONES Y PENDIENTES en reunion de equipo 27/06 :computer:
+## DEMO EQUIPO - OBSERVACIONES Y PENDIENTES en reunion de equipo 27/06 :computer:
 ```
   1_ Revisar flujo de cliente anonimo
   2_ Agregar dni y sexo en registro y buscarlos en el lector
@@ -159,7 +169,7 @@ Alejandro Laborde Parodi ->
   7_ Mozo confirma el pago y libera la mesa
 ```
 
-## OBSERVACIONES Y PENDIENTES en reunion de equipo 02/06 :computer:
+## DEMO EQUIPO - OBSERVACIONES Y PENDIENTES en reunion de equipo 02/06 :computer:
 ```
  1_ Agregar Push notification a cocineros y bartender al momento de recibir pedidos
  2_ Como cliente, al rechazar la confirmacion de recepcion pedido, enviar notificacion al mozo.
