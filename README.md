@@ -166,4 +166,5 @@ Alejandro Laborde Parodi ->
  3_ Pantalla Supervisor, arreglar header
  4_ Al momento de liberar una mesa, tambien cambiar el estado del cliente a 'off'
 ```
-
+## Ultima versión generada 02/07/2020 :iphone:
+Build 02/07/2020 : [APK](https://github.com/AlejandroLaborde/2020_TP_PPS_Comanda_1_cuatri/tree/master/proyecto/builds/02-07-2020)
