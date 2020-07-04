@@ -20,7 +20,7 @@
           <ion-label>{{producto.nombre}}</ion-label>
           <ion-button color="danger" (click)="prepararBebida(producto, pedido)">Preparar</ion-button>
         </ion-item>
-        <ion-item color="dark" *ngIf="producto.estado == 'preparacion'">
+        <ion-item color="dark" *ngIf="producto.estado == 'preparación'">
           <ion-label>{{producto.nombre}}</ion-label>
           <ion-button color="success" (click)="bebidaLista(producto, pedido)">Listo</ion-button>
         </ion-item>

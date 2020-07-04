@@ -2,7 +2,7 @@
 export enum estadoProducto{
     
     pendiente= 'espera',
-    preparandose= 'preparacion',
+    preparandose= 'preparación',
     listo= 'listo',
     propina= 'propina',
 }

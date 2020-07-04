@@ -77,7 +77,7 @@ export class ClientePage implements OnInit {
       if(pedidoExistente.estado==estadoPedido.servido){
         Swal.fire({
           icon:"success",
-          title:"Confirmacion de recepción pedido.",
+          title:"Confirmación de recepción pedido.",
           cancelButtonColor:'red',
           cancelButtonText: 'Aun no me llego',
           confirmButtonText: 'Llego!',
