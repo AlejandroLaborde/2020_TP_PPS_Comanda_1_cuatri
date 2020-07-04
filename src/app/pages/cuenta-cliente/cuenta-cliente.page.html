@@ -8,6 +8,7 @@
 
 <ion-content padding color="dark">
 
+ 
   <table *ngIf="this.pedido"  class="table table-dark table-striped">
     <thead >
       <tr>
@@ -23,17 +24,18 @@
         <td>{{producto.nombre}}</td>
         <td>${{producto.precio}}</td>
       </tr>
-      <tr color="success" >
-        <td></td>
-        <td>TOTAL</td>
-        <td>${{this.total}}</td>
-      </tr>
+      
     </tbody>
   </table>
 </ion-content>
 
 
 <ion-footer *ngIf="this.pedido">
+  <ion-toolbar >
+    <ion-row style="justify-content: space-around;">
+      <h1 style="color: wheat;}">Total ${{this.total}}</h1>
+    </ion-row>
+  </ion-toolbar>
     <ion-toolbar >
       <ion-row style="justify-content: space-around;">
         <ion-button *ngIf="this.verPropina" color="light" (click)="propina()" > Propina    <ion-icon name="qr-code-outline"></ion-icon></ion-button>

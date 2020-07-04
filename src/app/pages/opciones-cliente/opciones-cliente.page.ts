@@ -26,7 +26,9 @@ export class OpcionesClientePage implements OnInit {
   }
   
   verEstado(){
-    this.router.navigate(['/mi-pedido',{id:this.pedido.id}]);
+
+    this.router.navigate(['/mi-pedido',{id:'-MBOxXpsRScaIA9P204g'}]);
+    // this.router.navigate(['/mi-pedido',{id:this.pedido.id}]);
   }
 
   pedirCuenta(){
