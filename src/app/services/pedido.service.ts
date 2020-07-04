@@ -31,6 +31,10 @@ export class PedidoService {
     return this.httpClient.patch(`${environment.hostFirebase}/pedidos/${idPedido}.json`,{estado:estadoPedido.inicial,productos:productos});
   }
 
+  altaEncuesta( idPedido:string, encuesta ){
+    return this.httpClient.post(`${environment.hostFirebase}/pedidos/${idPedido}/encuesta.json`,encuesta);
+  }
+
   cambiaEstadoPedido( idPedido:string, estadoPedido: estadoPedido ){
     return this.httpClient.patch(`${environment.hostFirebase}/pedidos/${idPedido}.json`,{estado:estadoPedido});
   }

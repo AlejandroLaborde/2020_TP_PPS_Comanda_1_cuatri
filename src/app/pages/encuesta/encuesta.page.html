@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+    <ion-back-button slot="start" text="Encuesta"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content padding color="dark">
+
+  <div class="card-body">
+  
+  <form [formGroup]="encuesta" style="margin-top: 20px;">
+    <ion-col>
+      <ion-row style="justify-content: center;text-align: -webkit-center;">
+        <h3 class="card-title">¿Qué le parecio la comida?</h3>
+      </ion-row>
+      <ion-row style="justify-content: center;text-align: -webkit-center;">
+        <p class="clasificacion">
+          <input id="radio1" type="radio" name="comida" value="5" formControlName="comida"><!--
+          --><label for="radio1">★</label><!--
+          --><input id="radio2" type="radio" name="comida" value="4" formControlName="comida" ><!--
+          --><label for="radio2">★</label><!--
+          --><input id="radio3" type="radio" name="comida" value="3" formControlName="comida"><!--
+          --><label for="radio3">★</label><!--
+          --><input id="radio4" type="radio" name="comida" value="2" formControlName="comida"><!--
+          --><label for="radio4">★</label><!--
+          --><input id="radio5" type="radio" name="comida" value="1" formControlName="comida"><!--
+          --><label for="radio5">★</label>
+        </p>
+      </ion-row>
+      
+      <ion-row style="justify-content: center;text-align: -webkit-center;">
+        <h3 class="card-title">¿Qué puntuación le darias a la aplicación?</h3>
+      </ion-row >
+      <ion-row style="justify-content: center;text-align: -webkit-center;">
+        <h3>{{mensaje}}</h3>
+      </ion-row >
+      <ion-row style="justify-content: center;text-align: -webkit-center; margin-top: 0px;">
+        <div class="inputDiv">
+          <input type="range" value="50" min="0" (change)="cambiaMensaje()" max="100" autocomplete="off" formControlName="funcionamientoApp">
+        </div>
+      </ion-row>
+      
+      <ion-row style="justify-content: center;text-align: -webkit-center;">
+        <h3 class="card-title">Nos gustaría que nos dejes tus comentarios</h3><br>
+      </ion-row>
+      <ion-row style="justify-content: center;text-align: -webkit-center;">
+        <div >
+          <ion-textarea rows="6" cols="25" formControlName="comentario" placeholder="Ingrese un comentario aqui"></ion-textarea>
+        </div>
+      </ion-row>
+    </ion-col>
+  </form>
+  </div>
+
+</ion-content>
+
+<ion-footer>
+<ion-toolbar >
+  <ion-button expand="block" (click)="submit()"  color="success" >Enviar encuesta  <ion-icon name="send"> </ion-icon></ion-button>
+</ion-toolbar>
+</ion-footer>

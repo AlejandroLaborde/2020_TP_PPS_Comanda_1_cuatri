@@ -17,6 +17,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { EstadoPipe } from './pipes/estado.pipe';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, EstadoPipe],
@@ -32,7 +33,9 @@ import { EstadoPipe } from './pipes/estado.pipe';
     ComponentsModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    ReactiveFormsModule,
+    FormsModule,
 
   ],
   providers: [

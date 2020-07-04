@@ -137,7 +137,7 @@ export class ClientePage implements OnInit {
   }
  
   miPedido(){
-    this.router.navigate(['/opciones-cliente',{id:'-MBOxXpsRScaIA9P204g'}]);
+    //this.router.navigate(['/opciones-cliente',{id:'-MBOxXpsRScaIA9P204g'}]);
 
     this.scanner.scan({prompt: "Scanee el codigo QR de su mesa"}).then(data => {
       if(data.text == this.pedido.mesa.id){
